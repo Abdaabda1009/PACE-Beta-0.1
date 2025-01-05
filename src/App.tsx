@@ -53,37 +53,35 @@ const App = () => (
       <Sonner />
       <BrowserRouter>
         <Routes>
-          <Route path={ROUTES.HOME} element={<Landing />} />
+          {/* Default route to Landing */}
+          <Route path="/" element={<Landing />} />
+
+          {/* Login page */}
           <Route path={ROUTES.LOGIN} element={<Login />} />
+
+          {/* Protected routes for the dashboard */}
           <Route
-            path="/"
+            path="/dashboard/*"
             element={
               <ProtectedRoute>
                 <DashboardLayout />
               </ProtectedRoute>
             }
           >
-            <Route index element={<Navigate to="/dashboard" replace />} />
-            <Route path="dashboard" element={<MainDashboard />} />
-            <Route
-              path="Dashboard/budget-planner"
-              element={<BudgetPlanner />}
-            />
-            <Route
-              path="Dashboard/analysis-goals"
-              element={<AnalysisGoals />}
-            />
-            <Route
-              path="Dashboard/debt-management"
-              element={<DebtManagement />}
-            />
-            <Route path="Dashboard/subscriptions" element={<Subscriptions />} />
-            <Route path="Dashboard/assets-management" element={<AssetsManagement />} />
-            <Route path="Dashboard/transactions" element={<Transactions />} />
-            <Route path="Dashboard/profile" element={<Profile />} />
-            <Route path="Dashboard/settings" element={<Settings />} />
-            <Route path="Dashboard/support" element={<Support />} />
+            <Route index element={<MainDashboard />} />
+            <Route path="budget-planner" element={<BudgetPlanner />} />
+            <Route path="analysis-goals" element={<AnalysisGoals />} />
+            <Route path="debt-management" element={<DebtManagement />} />
+            <Route path="subscriptions" element={<Subscriptions />} />
+            <Route path="assets-management" element={<AssetsManagement />} />
+            <Route path="transactions" element={<Transactions />} />
+            <Route path="profile" element={<Profile />} />
+            <Route path="settings" element={<Settings />} />
+            <Route path="support" element={<Support />} />
           </Route>
+
+          {/* Catch-all route redirects to Landing */}
+          <Route path="*" element={<Navigate to="/" replace />} />
         </Routes>
       </BrowserRouter>
     </TooltipProvider>

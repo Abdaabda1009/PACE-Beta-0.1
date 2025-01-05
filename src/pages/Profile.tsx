@@ -7,26 +7,33 @@ import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Loader2 } from "lucide-react";
 
 interface Profile {
-  id: string;
-  username: string | null;
-  full_name: string | null;
   avatar_url: string | null;
+  created_at: string | null;
+  full_name: string | null;
+  id: string;
+  role: string | null;
+  updated_at: string | null;
+  username: string | null;
 }
 
 export const Profile = () => {
   const [loading, setLoading] = useState(true);
   const [profile, setProfile] = useState<Profile | null>(null);
-  const [username, setUsername] = useState("");
-  const [fullName, setFullName] = useState("");
-  const [updating, setUpdating] = useState(false);
+  const [username, setUsername] = useState<string>("");
+  const [fullName, setFullName] = useState<string>("");
+  const [updating, setUpdating] = useState<boolean>(false);
 
   useEffect(() => {
     getProfile();
   }, []);
 
+  // Function to fetch the current user's profile
   async function getProfile() {
     try {
-      const { data: { user } } = await supabase.auth.getUser();
+      const {
+        data: { user },
+      } = await supabase.auth.getUser();
+
       if (!user) throw new Error("No user found");
 
       const { data, error } = await supabase
@@ -51,10 +58,15 @@ export const Profile = () => {
     }
   }
 
+  // Function to update the user's profile
   async function updateProfile() {
     try {
       setUpdating(true);
-      const { data: { user } } = await supabase.auth.getUser();
+
+      const {
+        data: { user },
+      } = await supabase.auth.getUser();
+
       if (!user) throw new Error("No user found");
 
       const updates = {
@@ -64,9 +76,7 @@ export const Profile = () => {
         updated_at: new Date().toISOString(),
       };
 
-      const { error } = await supabase
-        .from("profiles")
-        .upsert(updates);
+      const { error } = await supabase.from("profiles").upsert(updates);
 
       if (error) throw error;
 
@@ -74,7 +84,7 @@ export const Profile = () => {
         title: "Profile updated",
         description: "Your profile has been successfully updated.",
       });
-      
+
       getProfile(); // Refresh profile data
     } catch (error) {
       toast({
@@ -99,7 +109,9 @@ export const Profile = () => {
     <div className="space-y-8 max-w-2xl mx-auto p-6">
       <div className="space-y-2">
         <h1 className="text-2xl font-semibold text-white">Profile Settings</h1>
-        <p className="text-gray-400">Manage your account settings and profile information.</p>
+        <p className="text-gray-400">
+          Manage your account settings and profile information.
+        </p>
       </div>
 
       <div className="space-y-6 bg-[#1A1F2C] p-6 rounded-lg border border-gray-800">
@@ -111,14 +123,21 @@ export const Profile = () => {
             </AvatarFallback>
           </Avatar>
           <div className="space-y-1">
-            <h3 className="text-lg font-medium text-white">{fullName || username || "Anonymous User"}</h3>
-            <p className="text-sm text-gray-400">Profile picture will be updated automatically when using social login</p>
+            <h3 className="text-lg font-medium text-white">
+              {fullName || username || "Anonymous User"}
+            </h3>
+            <p className="text-sm text-gray-400">
+              Profile picture will be updated automatically when using social
+              login
+            </p>
           </div>
         </div>
 
         <div className="space-y-4">
           <div className="space-y-2">
-            <label className="text-sm font-medium text-gray-400">Username</label>
+            <label className="text-sm font-medium text-gray-400">
+              Username
+            </label>
             <Input
               value={username}
               onChange={(e) => setUsername(e.target.value)}
@@ -128,7 +147,9 @@ export const Profile = () => {
           </div>
 
           <div className="space-y-2">
-            <label className="text-sm font-medium text-gray-400">Full Name</label>
+            <label className="text-sm font-medium text-gray-400">
+              Full Name
+            </label>
             <Input
               value={fullName}
               onChange={(e) => setFullName(e.target.value)}

@@ -38,7 +38,7 @@ export const TopNavBar = () => {
           <Input
             type="text"
             placeholder="Search"
-            className="w-[300px] bg-dashboard-card text-white border-none pl-10"
+            className="w-[100px] bg-dashboard-card text-white border-none pl-10"
           />
           <Search className="absolute left-3 h-4 w-4 text-dashboard-muted" />
           <Button 

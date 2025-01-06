@@ -85,6 +85,14 @@ export default {
         "fade-in": "fade-in 0.3s ease-out",
       },
     },
+    screens: {
+      xs: "320px", // Custom mobile breakpoint for extra small devices
+      sm: "640px", // Default sm breakpoint for tablets and larger mobile devices
+      md: "768px", // Default md breakpoint for tablets and small laptops
+      lg: "1024px", // Default lg breakpoint for larger laptops and desktops
+      xl: "1280px", // Default xl breakpoint for larger screens
+      "2xl": "1400px", // Your custom breakpoint for larger devices
+    },
   },
   plugins: [require("tailwindcss-animate")],
 } satisfies Config;

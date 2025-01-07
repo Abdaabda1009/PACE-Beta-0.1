@@ -4,8 +4,15 @@ import { Card } from "@/components/ui/card";
 
 export const ActionButtonCard = () => {
   const navigate = useNavigate();
+
+
   return (
-    <section className="py-16 rounded-xl bg-dashboard-background relative overflow-hidden">
+    <section 
+    className="py-16 rounded-xl bg-dashboard-background relative overflow-hidden"
+    style={{
+      background: 'linear-gradient(to right, hsla(227, 21%, 18%, 1), hsla(200, 67%, 25%, 1))'
+      }}
+      >
       <div className="container mx-auto px-6">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
           <div className="space-y-6">

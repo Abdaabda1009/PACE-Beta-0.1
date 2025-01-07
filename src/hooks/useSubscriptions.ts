@@ -36,6 +36,7 @@ export const useSubscriptions = () => {
         id: subscription.id,
         name: subscription.name,
         amount: subscription.amount,
+        next_payment_date: subscription.next_payment_date,
         date: subscription.next_payment_date,
         image_url: subscription.image_url,
       }));

@@ -95,10 +95,10 @@ export const CryptoSection = () => {
   return (
     <section className="animate-fade-in bg-[#252732] p-6 px-8 rounded-xl">
       <div className="flex justify-between items-center mb-6">
-        <h2 className="text-3xl font-bold">Track Your Crypto</h2>
+        <h2 className="text-3xl mr-2 mt-2 font-bold">Track Your Crypto</h2>
         <Button
           onClick={() => setIsAddCryptoModalOpen(true)}
-          className="w-[44px] h-[44px] text-gray-400 hover:text-white bg-[#050524]"
+          className="w-[44px] h-[44px] mr-1 bg-[#050524] text-gray-400 hover:bg-gradient-to-r from-[#ADADAD] to-[#1A7DAF]"
         >
           <Plus className="w-6 h-6 gap-2" />
         </Button>

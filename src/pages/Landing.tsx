@@ -7,6 +7,7 @@ import { FeaturesGrid } from "@/components/landingpage/components/FeaturesGrid";
 import { MissionSection } from "@/components/landingpage/components/MissionSection";
 import "@/components/landingpage/assets/SpotlightCard.css";
 import { ActionButtonCard } from "@/components/landingpage/components/ActionButtonCard";
+import { Footer } from "@/components/landingpage/components/Footer";
 
 export const Landing = () => {
   return (
@@ -19,6 +20,7 @@ export const Landing = () => {
       <FeaturesGrid />
       <MissionSection />
       <ActionButtonCard />
+      < Footer />
     </div>
   );
 };

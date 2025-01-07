@@ -1,10 +1,20 @@
-import { Bell, LogOut, Mail, Search } from "lucide-react";
+import { Bell, LogOut, Mail, Search, Edit } from "lucide-react";
 import { Button } from "../ui/button";
 import { Input } from "../ui/input";
 import { useState } from "react";
 import { supabase } from "@/integrations/supabase/client";
 import { useNavigate, useLocation } from "react-router-dom";
 import { CurrencySelector } from "@/components/CurrencySelector";
+import {
+  CommandDialog,
+  CommandEmpty,
+  CommandGroup,
+  CommandInput,
+  CommandItem,
+  CommandList,
+} from "@/components/ui/command";
+import { createDefaultWidgets } from "@/components/dashboard/confiq/defaultWidgets";
+import { useSubscriptions } from "@/hooks/useSubscriptions";
 
 export const TopNavBar = () => {
   const [bellCount, setBellCount] = useState(3);
@@ -38,7 +48,7 @@ export const TopNavBar = () => {
           <Input
             type="text"
             placeholder="Search"
-            className="w-[100px] bg-dashboard-card text-white border-none pl-10"
+            className="w-[150px] bg-dashboard-card text-white border-none pl-10"
           />
           <Search className="absolute left-3 h-4 w-4 text-dashboard-muted" />
           <Button 

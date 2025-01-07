@@ -44,13 +44,13 @@ export const LandingNavbar = () => {
         </DropdownMenuTrigger>
         <DropdownMenuContent className="bg-dashboard-card">
           <DropdownMenuItem className="text-white hover:bg-dashboard-background/50">
-            Forums
+            Reddit
           </DropdownMenuItem>
           <DropdownMenuItem className="text-white hover:bg-dashboard-background/50">
-            Events
+            X
           </DropdownMenuItem>
           <DropdownMenuItem className="text-white hover:bg-dashboard-background/50">
-            Groups
+            Discord
           </DropdownMenuItem>
         </DropdownMenuContent>
       </DropdownMenu>

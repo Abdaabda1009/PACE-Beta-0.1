@@ -70,7 +70,7 @@ export const SubscriptionOverview = ({
           <Button
             variant="ghost"
             size="icon"
-            className="w-[44px] h-[44px] p-[10px] text-gray-400 hover:text-white bg-[#242837]"
+            className="bg-[#050524] text-gray-100 gap-3 hover:bg-gradient-to-r from-[#ADADAD] to-[#1A7DAF]"
             onClick={() => setIsAddDialogOpen(true)}
           >
             <Plus className="h-5 w-5" />
@@ -80,7 +80,7 @@ export const SubscriptionOverview = ({
               <Button
                 variant="ghost"
                 size="icon"
-                className="w-[44px] h-[44px] p-[10px] text-gray-400 hover:text-white bg-[#242837]"
+                className="bg-[#050524] text-gray-100 gap-3 hover:bg-gradient-to-r from-[#ADADAD] to-[#1A7DAF]"
               >
                 <MoreVertical className="h-5 w-5" />
               </Button>

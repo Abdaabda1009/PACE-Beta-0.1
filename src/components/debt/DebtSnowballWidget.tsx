@@ -90,30 +90,30 @@ export const DebtSnowballWidget = () => {
               {sortedDebts[0].title}
             </div>
             <div className="text-sm text-gray-400">
-              Balance: {sortedDebts[0].remainingDebt} • 
-              Min Payment: {sortedDebts[0].monthlyPayment} •
-              Rate: {sortedDebts[0].interestRate}
+              Balance: {sortedDebts[0].remainingDebt} • Min Payment:{" "}
+              {sortedDebts[0].monthlyPayment} • Rate:{" "}
+              {sortedDebts[0].interestRate}
             </div>
           </div>
         )}
 
         {/* Debt Chart */}
-        <div className="h-[200px] mt-4">
+        <div className="h-[200px] w-[100px] mt-4">
           <ResponsiveContainer width="100%" height="100%">
             <BarChart data={chartData}>
               <XAxis dataKey="name" stroke="#6B7280" />
               <YAxis stroke="#6B7280" />
-              <Tooltip 
-                contentStyle={{ 
-                  backgroundColor: '#1F2937',
-                  border: 'none',
-                  borderRadius: '8px',
-                  color: '#F3F4F6'
+              <Tooltip
+                contentStyle={{
+                  backgroundColor: "#1F2937",
+                  border: "none",
+                  borderRadius: "8px",
+                  color: "#F3F4F6",
                 }}
-                cursor={{ fill: 'transparent' }}
+                cursor={{ fill: "transparent" }}
               />
-              <Bar 
-                dataKey="amount" 
+              <Bar
+                dataKey="amount"
                 fill="rgb(59 130 246 / 0.5)"
                 radius={[4, 4, 0, 0]}
               />
@@ -124,7 +124,7 @@ export const DebtSnowballWidget = () => {
         {/* Debt List */}
         <div className="space-y-3">
           {sortedDebts.map((debt, index) => (
-            <div 
+            <div
               key={debt.id}
               className="flex items-center gap-3 p-3 bg-[#050524] rounded-lg"
             >
@@ -138,12 +138,18 @@ export const DebtSnowballWidget = () => {
                 </div>
               )}
               <div className="flex-1">
-                <div className="text-sm font-medium text-white">{debt.title}</div>
+                <div className="text-sm font-medium text-white">
+                  {debt.title}
+                </div>
                 <div className="text-xs text-gray-400">Due: {debt.dueDate}</div>
               </div>
               <div className="text-right">
-                <div className="text-sm font-medium text-white">{debt.remainingDebt}</div>
-                <div className="text-xs text-gray-400">{debt.interestRate} APR</div>
+                <div className="text-sm font-medium text-white">
+                  {debt.remainingDebt}
+                </div>
+                <div className="text-xs text-gray-400">
+                  {debt.interestRate} APR
+                </div>
               </div>
             </div>
           ))}
@@ -153,7 +159,7 @@ export const DebtSnowballWidget = () => {
         <div className="flex gap-3 mt-4">
           <Button
             onClick={handleAddExtraPayment}
-            className="flex-1 bg-dashboard-success hover:bg-dashboard-success/90"
+            className="felx-1 bg-[#050524] p-6 text-gray-100 gap-3 hover:bg-gradient-to-r from-[#ADADAD] to-[#1A7DAF]"
           >
             <Plus className="w-4 h-4 mr-2" />
             Add Extra Payment
@@ -161,7 +167,7 @@ export const DebtSnowballWidget = () => {
           <Button
             onClick={handleReassessStrategy}
             variant="outline"
-            className="flex-1 border-gray-800 hover:bg-gray-800"
+            className="flex-1 bg-[#050524] p-6 text-gray-100 gap-3 hover:bg-gradient-to-r from-[#ADADAD] to-[#1A7DAF]"
           >
             <RefreshCw className="w-4 h-4 mr-2" />
             Reassess Strategy

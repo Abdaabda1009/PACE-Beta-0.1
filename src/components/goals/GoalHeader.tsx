@@ -26,29 +26,32 @@ export const GoalHeader = ({ onEditClick, onAddClick, onDeleteClick, hasGoals }:
           <Button
             variant="outline"
             size="sm"
-            className="bg-[#050524] text-white border-gray-800 hover:bg-gray-800"
+            className="w-[44px] h-[44px] mr-1 bg-[#050524] text-gray-400 hover:bg-gradient-to-r from-[#ADADAD] to-[#1A7DAF]"
           >
             <MoreVertical className="h-4 w-4" />
           </Button>
         </DropdownMenuTrigger>
-        <DropdownMenuContent align="end" className="bg-[#1A1F2C] border-gray-800">
-          <DropdownMenuItem 
+        <DropdownMenuContent
+          align="end"
+          className="bg-[#1A1F2C] border-gray-800"
+        >
+          <DropdownMenuItem
             className="text-gray-400 hover:text-white focus:text-white cursor-pointer"
-            onClick={() => navigate('/analysis-goals')}
+            onClick={() => navigate("/analysis-goals")}
           >
             <Eye className="mr-2 h-4 w-4" />
             <span>View All</span>
           </DropdownMenuItem>
           {hasGoals && (
             <>
-              <DropdownMenuItem 
+              <DropdownMenuItem
                 className="text-gray-400 hover:text-white focus:text-white cursor-pointer"
                 onClick={onEditClick}
               >
                 <Edit className="mr-2 h-4 w-4" />
                 <span>Edit</span>
               </DropdownMenuItem>
-              <DropdownMenuItem 
+              <DropdownMenuItem
                 className="text-red-400 hover:text-red-300 focus:text-red-300 cursor-pointer"
                 onClick={onDeleteClick}
               >
@@ -57,7 +60,7 @@ export const GoalHeader = ({ onEditClick, onAddClick, onDeleteClick, hasGoals }:
               </DropdownMenuItem>
             </>
           )}
-          <DropdownMenuItem 
+          <DropdownMenuItem
             className="text-gray-400 hover:text-white focus:text-white cursor-pointer"
             onClick={onAddClick}
           >

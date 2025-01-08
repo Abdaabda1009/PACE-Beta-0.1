@@ -1,13 +1,13 @@
-import { LandingNavbar } from "@/components/landingpage/components/LandingNavbar";
-import { HeroSection } from "@/components/landingpage/components/HeroSection";
+import { LandingNavbar } from "@/components/landingpage/components/Navbar/LandingNavbar";
+import { HeroSection } from "@/components/landingpage/components/Hero/HeroSection";
 import { FeaturesSection } from "@/components/landingpage/components/FeaturesSection";
 import { VideoSection } from "@/components/landingpage/components/VideoSection";
 import { PoweredBy } from "@/components/landingpage/components/PoweredBy";
 import { FeaturesGrid } from "@/components/landingpage/components/FeaturesGrid";
 import { MissionSection } from "@/components/landingpage/components/MissionSection";
 import "@/components/landingpage/assets/SpotlightCard.css";
-import { ActionButtonCard } from "@/components/landingpage/components/ActionButtonCard";
-import { Footer } from "@/components/landingpage/components/Footer";
+import { ActionButtonCard } from "@/components/landingpage/components/Action-button/ActionButtonCard";
+import { Footer } from "@/components/landingpage/components/footer/Footer";
 
 export const Landing = () => {
   return (
@@ -20,7 +20,7 @@ export const Landing = () => {
       <FeaturesGrid />
       <MissionSection />
       <ActionButtonCard />
-      < Footer />
+      <Footer />
     </div>
   );
 };

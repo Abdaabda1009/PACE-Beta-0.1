@@ -91,12 +91,10 @@ export const MainDashboard = () => {
   };
 
   return (
-    <>
-      <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-3 sm:gap-4 mb-4 sm:mb-6">
-        <h1 className="text-lg sm:text-xl md:text-2xl font-semibold">
-          Dashboard
-        </h1>
-        <DashboardCustomizeButton
+      <div className="space-y-4 sm:space-y-6 p-3 sm:p-6 max-w-[1920px] mx-auto">
+      <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-3 sm:gap-4">
+        <h1 className="text-lg sm:text-xl md:text-2xl font-semibold">Dashboard</h1>
+        <DashboardCustomizeButton 
           preferences={dashboardPreferences}
           onPreferencesUpdate={fetchDashboardPreferences}
         />
@@ -124,6 +122,6 @@ export const MainDashboard = () => {
           onSubscriptionUpdated={refetchSubscriptions}
         />
       )}
-    </>
+      </div>
   );
 };

@@ -49,19 +49,10 @@ export default function Stack({
           {
             id: 1,
             img: "/assets/logo.png",
+            title: "Card 1",
+            description: "This is card 1",
           },
-          {
-            id: 2,
-            img: "https://images.unsplash.com/photo-1449844908441-8829872d2607?q=80&w=500&auto=format",
-          },
-          {
-            id: 3,
-            img: "https://images.unsplash.com/photo-1452626212852-811d58933cae?q=80&w=500&auto=format",
-          },
-          {
-            id: 4,
-            img: "https://images.unsplash.com/photo-1572120360610-d971b9d7767c?q=80&w=500&auto=format",
-          },
+          
         ]
   );
 

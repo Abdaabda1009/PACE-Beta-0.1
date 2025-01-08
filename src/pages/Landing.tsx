@@ -1,7 +1,7 @@
 import { LandingNavbar } from "@/components/landingpage/components/Navbar/LandingNavbar";
 import { HeroSection } from "@/components/landingpage/components/Hero/HeroSection";
 import { FeaturesSection } from "@/components/landingpage/components/FeaturesSection";
-import { VideoSection } from "@/components/landingpage/components/VideoSection";
+import { DashboardPic } from "@/components/landingpage/components/DashboardPic";
 import { PoweredBy } from "@/components/landingpage/components/PoweredBy";
 import { FeaturesGrid } from "@/components/landingpage/components/FeaturesGrid";
 import { MissionSection } from "@/components/landingpage/components/MissionSection";
@@ -15,7 +15,7 @@ export const Landing = () => {
       <LandingNavbar />
       <HeroSection />
       <FeaturesSection />
-      <VideoSection />
+      <DashboardPic />
       <PoweredBy />
       <FeaturesGrid />
       <MissionSection />

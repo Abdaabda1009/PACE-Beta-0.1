@@ -1,4 +1,4 @@
-import { APP_NAME } from "@/lib/constants";
+
 import { NewsletterSection } from "./NewsletterSection";
 import { BrandSection } from "./BrandSection";
 import { FooterLinks } from "./FooterLinks";
@@ -7,16 +7,15 @@ import { Copyright } from "./Copyright";
 
 export const Footer = () => {
   const serviceLinks = [
-    { to: "/about", label: "About Us" },
-    { to: "/contact", label: "Contact Us" },
-    { to: "/features", label: "Features" },
+    { to: "/AboutUs", label: "About Us" },
+    { to: "/Features", label: "Features" },
     { to: "/blog", label: "Blog" },
   ];
 
-  const community = [
-    { to: "/dashboard", label: "Reddit" },
-    { to: "/docs", label: "Discord" },
-    { to: "/support", label: "Support" },,
+  const communityLinks = [
+    { href: "https://www.reddit.com/r/PACEDebtfree/", label: "Reddit" },
+    { href: "https://twitter.com", label: "X" },
+    { href: "https://discord.com", label: "Discord" },
   ];
 
   return (
@@ -27,7 +26,7 @@ export const Footer = () => {
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8 md:gap-12">
           <BrandSection />
           <FooterLinks title="Service" links={serviceLinks} />
-          <FooterLinks title="Community" links={community} />
+          <FooterLinks title="Community" links={communityLinks} />
           <ContactSection />
         </div>
 

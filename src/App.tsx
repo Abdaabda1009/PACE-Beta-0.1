@@ -2,7 +2,7 @@ import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
+import { BrowserRouter, Routes, Route, Navigate, Outlet } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { supabase } from "@/integrations/supabase/client";
 import { DashboardLayout } from "./components/dashboard/DashboardLayout";
@@ -19,6 +19,13 @@ import { Profile } from "./pages/Profile";
 import { Settings } from "./pages/Settings";
 import { Support } from "./pages/Support";
 import { ROUTES } from "./lib/constants";
+
+
+import AboutUs from "@/components/landingpage/pages/AboutUs";
+import Features from "@/components/landingpage/pages/Features";
+import Blog from "@/components/landingpage/pages/BLog";
+
+
 
 const queryClient = new QueryClient();
 
@@ -46,6 +53,15 @@ const ProtectedRoute = ({ children }: { children: React.ReactNode }) => {
   return <>{children}</>;
 };
 
+
+const LandingWrapper = () => (
+  <div>
+    <Landing />
+    <Outlet />
+  </div>
+  );
+
+
 const App = () => (
   <QueryClientProvider client={queryClient}>
     <TooltipProvider>
@@ -54,7 +70,10 @@ const App = () => (
       <BrowserRouter>
         <Routes>
           {/* Default route to Landing */}
-          <Route path="/" element={<Landing />} />
+          <Route path="/" element={<LandingWrapper />} />
+          <Route path="AboutUs" element={<AboutUs />} />
+          <Route path="features" element={<Features />} />
+          <Route path="blog" element={<Blog />} />
 
           {/* Login page */}
           <Route path={ROUTES.LOGIN} element={<Login />} />

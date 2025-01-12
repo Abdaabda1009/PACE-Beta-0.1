@@ -10,7 +10,8 @@ export const ContactSection = () => {
         </li>
         <li className="flex items-center gap-2 text-dashboard-muted text-sm sm:text-base">
           <Phone className="w-4 sm:w-5 h-4 sm:h-5" />
-          <span>+1 (555) 123-4567</span>
+          <span>+46 79 339 94 53</span>
+          <span>+46 72 581 81 47</span>
         </li>
         <li className="flex items-center gap-3 mt-4 sm:mt-6">
           <SocialLink href="https://twitter.com" icon="twitter" />

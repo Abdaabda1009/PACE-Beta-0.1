@@ -1,33 +1,53 @@
 .stack {
   position: absolute;
   top: 20%;
+  left: 50%;
+  transform: translateX(-50%); /* Centers the stack horizontally */
   width: 200px;
   height: 250px;
-  will-change: transform;
   display: flex;
   align-items: center;
   justify-content: center;
   touch-action: none;
+  will-change: transform;
 }
 
 .stack > div {
   background-size: auto 85%;
   background-repeat: no-repeat;
   background-position: center center;
-  width: 45vh;
+  width: 100%; /* Use 100% to fit within the parent container */
   max-width: 200px;
-  height: 85vh;
+  height: auto;
   max-height: 250px;
   will-change: transform;
   user-select: none;
   border-radius: 10px;
   box-shadow: 0 5px 50px rgba(129, 129, 129, 0.05);
+  cursor: pointer; /* Default cursor for clickable items */
 
-  &:hover {
-    cursor: grab;
+  transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth transitions */
+
+}
+
+/* Hover and active states */
+.stack > div:hover {
+  cursor: grab;
+}
+
+.stack > div:active {
+  cursor: grabbing;
+}
+
+/* Ensure responsiveness for smaller screens */
+@media (max-width: 768px) {
+  .stack {
+    width: 150px;
+    height: 200px;
   }
 
-  &:active {
-    cursor: grabbing;
+  .stack > div {
+    max-width: 150px;
+    max-height: 200px;
   }
 }

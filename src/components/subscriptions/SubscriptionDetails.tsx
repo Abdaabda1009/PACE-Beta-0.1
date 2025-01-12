@@ -1,20 +1,21 @@
-import { CalendarDays } from "lucide-react";
+import { useCurrencyPreference } from "@/hooks/useCurrencyPreference";
 
 interface SubscriptionDetailsProps {
-  amount: string;
+  amount: number;
   date: string;
 }
 
-export const SubscriptionDetails = ({ amount, date }: SubscriptionDetailsProps) => {
+export const SubscriptionDetails = ({
+  amount,
+  date,
+}: SubscriptionDetailsProps) => {
+  const { formatAmount, convertAmount } = useCurrencyPreference();
+
   return (
-    <div className="flex flex-col gap-2">
-      <div className="flex items-center gap-2 text-gray-400">
-        <span>{amount}</span>
-      </div>
-      <div className="flex items-center gap-2 text-gray-400">
-        <CalendarDays className="w-4 h-4" />
-        <span>{date}</span>
-      </div>
+    <div className="flex items-center gap-2 text-sm text-gray-400">
+      <span>{formatAmount(convertAmount(amount))}</span>
+      <span>•</span>
+      <span>Next payment: {new Date(date).toLocaleDateString()}</span>
     </div>
   );
 };

@@ -1,13 +1,11 @@
 import { Input } from "@/components/ui/input";
-import { InputFieldsProps } from "../EditSubscriptionDialog/types";
+import { InputFieldsProps } from "./types";
 
 export const InputFields = ({
   name,
   amount,
-  date,
   onNameChange,
   onAmountChange,
-  onDateChange,
 }: InputFieldsProps) => {
   return (
     <>
@@ -25,15 +23,6 @@ export const InputFields = ({
           type="number"
           value={amount}
           onChange={(e) => onAmountChange(e.target.value)}
-          className="bg-[#242837] border-gray-800 text-white"
-        />
-      </div>
-      <div className="space-y-2">
-        <label className="text-sm text-gray-400">Next Payment Date</label>
-        <Input
-          type="date"
-          value={date}
-          onChange={(e) => onDateChange(e.target.value)}
           className="bg-[#242837] border-gray-800 text-white"
         />
       </div>

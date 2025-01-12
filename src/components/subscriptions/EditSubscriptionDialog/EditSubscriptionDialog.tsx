@@ -5,13 +5,35 @@ import {
   DialogHeader,
   DialogTitle,
 } from "@/components/ui/dialog";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
 import { supabase } from "@/integrations/supabase/client";
 import { toast } from "@/hooks/use-toast";
-import { LogoSelector } from "../EditSubscriptionDialog/LogoSelector";
-import { InputFields } from "../EditSubscriptionDialog/InputFields";
-import { SaveButton } from "../EditSubscriptionDialog/SaveButton";
-import { SUBSCRIPTION_LOGOS } from "../EditSubscriptionDialog/constants";
-import { EditSubscriptionDialogProps } from "../EditSubscriptionDialog/types";
+import { LogoSelector } from "./LogoSelector";
+import { InputFields } from "./InputFields";
+import { SaveButton } from "./SaveButton";
+import { SUBSCRIPTION_LOGOS } from "./constants";
+import { EditSubscriptionDialogProps } from "./types";
+
+const FREQUENCIES = [
+  { value: "daily", label: "Daily" },
+  { value: "monthly", label: "Monthly" },
+  { value: "yearly", label: "Yearly" },
+];
+
+const CATEGORIES = [
+  { value: "shopping", label: "Shopping" },
+  { value: "technology", label: "Technology" },
+  { value: "streaming", label: "Streaming" },
+  { value: "entertainment", label: "Entertainment" },
+  { value: "utilities", label: "Utilities" },
+  { value: "other", label: "Other" },
+];
 
 export const EditSubscriptionDialog = ({
   open,
@@ -21,7 +43,10 @@ export const EditSubscriptionDialog = ({
 }: EditSubscriptionDialogProps) => {
   const [name, setName] = useState(subscription.name);
   const [amount, setAmount] = useState(subscription.amount.toString());
-  const [date, setDate] = useState(subscription.date);
+  const [frequency, setFrequency] = useState(
+    subscription.frequency || "monthly"
+  );
+  const [category, setCategory] = useState(subscription.category || "other");
   const [selectedLogo, setSelectedLogo] = useState<
     keyof typeof SUBSCRIPTION_LOGOS
   >(
@@ -47,7 +72,6 @@ export const EditSubscriptionDialog = ({
         return;
       }
 
-      // Validate UUID format
       if (
         !subscription.id.match(
           /^[0-9a-f]{8}-[0-9a-f]{4}-4[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i
@@ -76,7 +100,8 @@ export const EditSubscriptionDialog = ({
         .update({
           name,
           amount: parsedAmount,
-          next_payment_date: date,
+          frequency,
+          category,
           image_url: SUBSCRIPTION_LOGOS[selectedLogo],
         })
         .eq("id", subscription.id)
@@ -114,11 +139,47 @@ export const EditSubscriptionDialog = ({
           <InputFields
             name={name}
             amount={amount}
-            date={date}
             onNameChange={setName}
             onAmountChange={setAmount}
-            onDateChange={setDate}
           />
+          <div className="space-y-2">
+            <label className="text-sm text-gray-400">Frequency</label>
+            <Select value={frequency} onValueChange={setFrequency}>
+              <SelectTrigger className="bg-[#242837] border-gray-800 text-white">
+                <SelectValue placeholder="Select frequency" />
+              </SelectTrigger>
+              <SelectContent className="bg-[#1A1F2C] border-gray-800">
+                {FREQUENCIES.map((freq) => (
+                  <SelectItem
+                    key={freq.value}
+                    value={freq.value}
+                    className="text-white hover:bg-[#242837] focus:bg-[#242837]"
+                  >
+                    {freq.label}
+                  </SelectItem>
+                ))}
+              </SelectContent>
+            </Select>
+          </div>
+          <div className="space-y-2">
+            <label className="text-sm text-gray-400">Category</label>
+            <Select value={category} onValueChange={setCategory}>
+              <SelectTrigger className="bg-[#242837] border-gray-800 text-white">
+                <SelectValue placeholder="Select category" />
+              </SelectTrigger>
+              <SelectContent className="bg-[#1A1F2C] border-gray-800">
+                {CATEGORIES.map((cat) => (
+                  <SelectItem
+                    key={cat.value}
+                    value={cat.value}
+                    className="text-white hover:bg-[#242837] focus:bg-[#242837]"
+                  >
+                    {cat.label}
+                  </SelectItem>
+                ))}
+              </SelectContent>
+            </Select>
+          </div>
           <LogoSelector
             selectedLogo={selectedLogo}
             onLogoChange={setSelectedLogo}
@@ -126,7 +187,7 @@ export const EditSubscriptionDialog = ({
         </div>
         <SaveButton
           isLoading={isLoading}
-          disabled={!name || !amount || !date}
+          disabled={!name || !amount}
           onCancel={() => onOpenChange(false)}
           onSave={handleSave}
         />

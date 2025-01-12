@@ -10,6 +10,9 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { AddSubscriptionDialog } from "@/components/subscriptions/AddSubscriptionDialog";
+import { Skeleton } from "@/components/ui/skeleton";
+import { CategoryFilter } from "@/components/subscriptions/filters/CategoryFilter";
+import { SUBSCRIPTION_CATEGORIES } from "../subscriptions/filters/constants";
 
 interface Subscription {
   id: string;
@@ -17,6 +20,9 @@ interface Subscription {
   amount: number;
   date: string;
   image_url?: string;
+  category: string;
+  frequency?: string;
+  email?: string;
 }
 
 interface SubscriptionOverviewProps {
@@ -33,24 +39,50 @@ export const SubscriptionOverview = ({
   onSubscriptionUpdated,
 }: SubscriptionOverviewProps) => {
   const [isAddDialogOpen, setIsAddDialogOpen] = useState(false);
+  const [activeFilter, setActiveFilter] = useState("all");
   const navigate = useNavigate();
 
   const handleViewAll = () => {
     navigate("/subscriptions");
   };
 
+  const filteredSubscriptions = subscriptions.filter((sub) =>
+    activeFilter === "all"
+      ? true
+      : (sub.category?.toLowerCase() || "other") === activeFilter
+  );
+
+  const renderSkeletonItems = () => (
+    <div className="space-y-4">
+      {[1, 2, 3].map((index) => (
+        <div key={index} className="flex items-center justify-between p-4">
+          <div className="flex items-center gap-3">
+            <Skeleton className="h-10 w-10 rounded-full" />
+            <div className="space-y-2">
+              <Skeleton className="h-4 w-24" />
+              <Skeleton className="h-3 w-16" />
+            </div>
+          </div>
+          <Skeleton className="h-6 w-16" />
+        </div>
+      ))}
+    </div>
+  );
+
   if (isLoading) {
     return (
       <div className="col-span-4 bg-dashboard-card px-8 py-6 rounded-xl border border-gray-800">
-        <div className="animate-pulse space-y-4">
-          <div className="h-8 bg-gray-700 rounded w-1/3"></div>
-          <div className="h-4 bg-gray-700 rounded w-1/4"></div>
-          <div className="space-y-3">
-            {[1, 2, 3].map((index) => (
-              <div key={index} className="h-16 bg-gray-700 rounded"></div>
-            ))}
+        <div className="flex items-center justify-between mb-6">
+          <div>
+            <Skeleton className="h-8 w-48 mb-2" />
+            <Skeleton className="h-4 w-64" />
+          </div>
+          <div className="flex gap-2">
+            <Skeleton className="h-[44px] w-[44px] rounded" />
+            <Skeleton className="h-[44px] w-[44px] rounded" />
           </div>
         </div>
+        {renderSkeletonItems()}
       </div>
     );
   }
@@ -70,7 +102,7 @@ export const SubscriptionOverview = ({
           <Button
             variant="ghost"
             size="icon"
-            className="bg-[#050524] text-gray-100 gap-3 hover:bg-gradient-to-r from-[#ADADAD] to-[#1A7DAF]"
+            className="w-[44px] h-[44px] p-[10px] text-gray-400 hover:text-white bg-[#242837]"
             onClick={() => setIsAddDialogOpen(true)}
           >
             <Plus className="h-5 w-5" />
@@ -80,7 +112,7 @@ export const SubscriptionOverview = ({
               <Button
                 variant="ghost"
                 size="icon"
-                className="bg-[#050524] text-gray-100 gap-3 hover:bg-gradient-to-r from-[#ADADAD] to-[#1A7DAF]"
+                className="w-[44px] h-[44px] p-[10px] text-gray-400 hover:text-white bg-[#242837]"
               >
                 <MoreVertical className="h-5 w-5" />
               </Button>
@@ -100,9 +132,15 @@ export const SubscriptionOverview = ({
           </DropdownMenu>
         </div>
       </div>
+
+      <CategoryFilter
+        activeFilter={activeFilter}
+        onFilterChange={setActiveFilter}
+      />
+
       <div className="divide-y divide-gray-800">
-        {subscriptions.length > 0 ? (
-          subscriptions.map((sub) => (
+        {filteredSubscriptions.length > 0 ? (
+          filteredSubscriptions.map((sub) => (
             <SubscriptionItem
               key={sub.id}
               id={sub.id}
@@ -110,14 +148,18 @@ export const SubscriptionOverview = ({
               image={sub.image_url || ""}
               amount={sub.amount}
               date={sub.date}
+              category={sub.category}
+              frequency={sub.frequency}
+              email= {sub.email}
               onEdit={() => onEditSubscription(sub)}
               onSubscriptionDeleted={onSubscriptionUpdated}
             />
           ))
         ) : (
           <div className="text-center text-gray-400 py-4">
-            No subscriptions yet. Click the Add button to create your first
-            entry!
+            {activeFilter === "all"
+              ? "No subscriptions yet. Click the Add button to create your first entry!"
+              : `No ${activeFilter} subscriptions found.`}
           </div>
         )}
       </div>

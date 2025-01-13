@@ -15,7 +15,11 @@ export const Footer = () => {
   const communityLinks = [
     { href: "https://www.reddit.com/r/PACEDebtfree/", label: "Reddit" },
     { href: "https://twitter.com", label: "X" },
-    { href: "https://discord.com", label: "Discord" },
+    { href: "https://discord.gg/cpCM8jKZ", label: "Discord" },
+    {
+      href: "https://featuresrequest.slack.com/archives/C088ZV8D3CG",
+      label: "Slack",
+    },
   ];
 
   return (

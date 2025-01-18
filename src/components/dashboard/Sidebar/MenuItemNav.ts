@@ -66,12 +66,10 @@ export const menuItems: MenuItem[] = [
     path: ROUTES.TRANSACTIONS,
   },
   {
-    icon: User,
-    label: "Profile & Settings",
-    children: [
-      { icon: User, label: "Profile", path: ROUTES.PROFILE },
-      { icon: Settings, label: "Settings", path: ROUTES.SETTINGS },
-    ],
+    icon: Settings,
+    label: " Settings",
+    path: ROUTES.SETTINGS,
+  
   },
   {
     icon: HelpCircle,

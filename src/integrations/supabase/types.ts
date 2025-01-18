@@ -291,6 +291,33 @@ export type Database = {
         };
         Relationships: [];
       };
+      feedback: {
+        Row: {
+          created_at: string | null;
+          feature: string;
+          feedback: string;
+          id: string;
+          rating: number;
+          user_id: string;
+        };
+        Insert: {
+          created_at?: string | null;
+          feature: string;
+          feedback: string;
+          id?: string;
+          rating: number;
+          user_id: string;
+        };
+        Update: {
+          created_at?: string | null;
+          feature?: string;
+          feedback?: string;
+          id?: string;
+          rating?: number;
+          user_id?: string;
+        };
+        Relationships: [];
+      };
       financial_insights: {
         Row: {
           content: string;
@@ -328,6 +355,13 @@ export type Database = {
           created_at: string | null;
           icon: string | null;
           id: string;
+          is_flagged: boolean | null;
+          is_recurring: boolean | null;
+          is_starred: boolean | null;
+          merchant: string | null;
+          notes: string | null;
+          payment_method: string | null;
+          tags: string[] | null;
           title: string;
           transaction_date: string | null;
           type: string;
@@ -339,6 +373,13 @@ export type Database = {
           created_at?: string | null;
           icon?: string | null;
           id?: string;
+          is_flagged?: boolean | null;
+          is_recurring?: boolean | null;
+          is_starred?: boolean | null;
+          merchant?: string | null;
+          notes?: string | null;
+          payment_method?: string | null;
+          tags?: string[] | null;
           title: string;
           transaction_date?: string | null;
           type: string;
@@ -350,6 +391,13 @@ export type Database = {
           created_at?: string | null;
           icon?: string | null;
           id?: string;
+          is_flagged?: boolean | null;
+          is_recurring?: boolean | null;
+          is_starred?: boolean | null;
+          merchant?: string | null;
+          notes?: string | null;
+          payment_method?: string | null;
+          tags?: string[] | null;
           title?: string;
           transaction_date?: string | null;
           type?: string;
@@ -392,7 +440,7 @@ export type Database = {
       };
       portfolio_history: {
         Row: {
-          asset_id: string | null;
+          asset_id: string;
           created_at: string | null;
           date: string | null;
           id: string;
@@ -400,7 +448,7 @@ export type Database = {
           value: number;
         };
         Insert: {
-          asset_id?: string | null;
+          asset_id: string;
           created_at?: string | null;
           date?: string | null;
           id?: string;
@@ -408,22 +456,14 @@ export type Database = {
           value: number;
         };
         Update: {
-          asset_id?: string | null;
+          asset_id?: string;
           created_at?: string | null;
           date?: string | null;
           id?: string;
           user_id?: string;
           value?: number;
         };
-        Relationships: [
-          {
-            foreignKeyName: "portfolio_history_asset_id_fkey";
-            columns: ["assets_id"];
-            isOneToOne: false;
-            referencedRelation: "assets";
-            referencedColumns: ["id"];
-          }
-        ];
+        Relationships: [];
       };
       profiles: {
         Row: {
@@ -545,7 +585,10 @@ export type Database = {
       subscriptions: {
         Row: {
           amount: number;
+          category: string;
           created_at: string;
+          email: string | null;
+          frequency: string;
           id: string;
           image_url: string | null;
           name: string;
@@ -554,7 +597,10 @@ export type Database = {
         };
         Insert: {
           amount: number;
+          category?: string;
           created_at?: string;
+          email?: string | null;
+          frequency?: string;
           id?: string;
           image_url?: string | null;
           name: string;
@@ -563,11 +609,38 @@ export type Database = {
         };
         Update: {
           amount?: number;
+          category?: string;
           created_at?: string;
+          email?: string | null;
+          frequency?: string;
           id?: string;
           image_url?: string | null;
           name?: string;
           next_payment_date?: string;
+          user_id?: string;
+        };
+        Relationships: [];
+      };
+      transaction_tags: {
+        Row: {
+          color: string;
+          created_at: string | null;
+          id: string;
+          name: string;
+          user_id: string;
+        };
+        Insert: {
+          color?: string;
+          created_at?: string | null;
+          id?: string;
+          name: string;
+          user_id: string;
+        };
+        Update: {
+          color?: string;
+          created_at?: string | null;
+          id?: string;
+          name?: string;
           user_id?: string;
         };
         Relationships: [];

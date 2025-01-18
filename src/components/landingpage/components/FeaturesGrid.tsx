@@ -24,8 +24,8 @@ export const FeaturesGrid = () => {
       icon: PiggyBank,
     },
     {
-      title: "Investment Planning",
-      description: "Plan and monitor your investments",
+      title: "Subscription Tracking",
+      description: "Plan and monitor your Subscriptions",
       icon: Target,
     },
     {
@@ -70,19 +70,11 @@ export const FeaturesGrid = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
           {features.map((feature, index) => (
             <SpotlightCard key={index} className="relative h-full">
-              <Card className="relative border-gray-900  w-full h-full overflow-hidden">
-                {/* Background Image */}
-                <div className="absolute w-full h-full inset-0">
-                  <img
-                    src="/assets/card.png"
-                    alt=""
-                    className="w-full h-full object-fixed opacity-100"
-                  />
-                </div>
+              <Card className="relative border-gray-900 bg-[#18799f] inline-flex ">
                 {/* Content */}
                 <CardContent className="relative z-10 pt-6">
-                  <div className="rounded-lg p-2 w-12 h-12 bg-blue-600/10 flex items-center justify-center mb-6 ">
-                    <feature.icon className="w-6 h-6 text-blue-600" />
+                  <div className="rounded-lg p-2 w-12 h-12 bg-blue-100/10 flex items-center justify-center mb-6 ">
+                    <feature.icon className="w-6 h-6 text-black-600" />
                   </div>
                   <h3 className="font-semibold text-lg text-white mb-2">
                     {feature.title}

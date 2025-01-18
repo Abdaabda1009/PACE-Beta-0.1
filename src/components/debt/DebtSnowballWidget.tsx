@@ -81,7 +81,7 @@ export const DebtSnowballWidget = () => {
 
         {/* Current Focus Debt */}
         {sortedDebts[0] && (
-          <div className="bg-[#0C0C55] p-4 rounded-lg">
+          <div className="bg-[#050524] rounded-lg p-3">
             <div className="flex items-center gap-2 mb-2">
               <DollarSign className="w-5 h-5 text-dashboard-success" />
               <span className="text-white font-medium">Current Focus</span>

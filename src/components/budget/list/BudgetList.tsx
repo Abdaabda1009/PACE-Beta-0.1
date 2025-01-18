@@ -9,6 +9,7 @@ import {
   DropdownMenuTrigger,
   DropdownMenuSeparator,
 } from "@/components/ui/dropdown-menu";
+import { BudgetIcon } from "../BudgetIcon";
 
 interface BudgetListProps {
   categories: BudgetCategory[];

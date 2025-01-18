@@ -14,7 +14,7 @@ import {
 } from "@/components/ui/form";
 import { Button } from "@/components/ui/button";
 import { useForm } from "react-hook-form";
-import { z } from "zod";
+import { symbol, z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import {
   Select,
@@ -25,6 +25,7 @@ import {
 } from "@/components/ui/select";
 import { useQuery } from "@tanstack/react-query";
 import { useToast } from "@/components/ui/use-toast";
+
 
 const formSchema = z.object({
   type: z.enum(["crypto", "stock"]),
@@ -47,20 +48,64 @@ const cryptoOptions = [
     label: "Bitcoin (BTC)",
     logo: "/assets/AddAssetLogo/Bitcoin.png",
   },
-  { value: "ETH", label: "Ethereum (ETH)", logo: "/Ethereum..png" },
-  { value: "BNB", label: "Binance Coin (BNB)", logo: "/Binance..png" },
-  { value: "USDT", label: "Tether (USDT)", logo: "/Tether..png" },
-  { value: "ADA", label: "Cardano (ADA)", logo: "/placeholder.svg" },
-  { value: "SOL", label: "Solana (SOL)", logo: "/Solana..png" },
-  { value: "XRP", label: "XRP (XRP)", logo: "/placeholder.svg" },
-  { value: "DOT", label: "Polkadot (DOT)", logo: "/placeholder.svg" },
-  { value: "DOGE", label: "Dogecoin (DOGE)", logo: "/placeholder.svg" },
-  { value: "SHIB", label: "Shiba Inu (SHIB)", logo: "/placeholder.svg" },
+  {
+    value: "ETH",
+    label: "Ethereum (ETH)",
+    logo: "/assets/AddAssetLogo/Ethereum.png",
+  },
+  {
+    value: "BNB",
+    label: "Binance Coin (BNB)",
+    logo: "/assets/AddAssetLogo/Binance.png",
+  },
+  {
+    value: "USDT",
+    label: "Tether (USDT)",
+    logo: "/assets/AddAssetLogo/Tether.png",
+  },
+  {
+    value: "ADA",
+    label: "Cardano (ADA)",
+    logo: "/assets/AddAssetLogo/cardano.png",
+  },
+  {
+    value: "SOL",
+    label: "Solana (SOL)",
+    logo: "/assets/AddAssetLogo/Solana.png",
+  },
+  {
+    value: "XRP",
+    label: "XRP (XRP)",
+    logo: "/assets/AddAssetLogo/Xrp.png",
+  },
+  {
+    value: "DOT",
+    label: "Polkadot (DOT)",
+    logo: "/assets/AddAssetLogo//Polkadot.png",
+  },
+  {
+    value: "DOGE",
+    label: "Dogecoin (DOGE)",
+    logo: "/assets/AddAssetLogo/dogecoin.png",
+  },
+  {
+    value: "SHIB",
+    label: "Shiba Inu (SHIB)",
+    logo: "/assets/AddAssetLogo/Shiba.png",
+  },
 ];
 
 const stockOptions = [
-  { value: "MSFT", label: "Microsoft (MSFT)", logo: "/placeholder.svg" },
-  { value: "AAPL", label: "Apple (AAPL)", logo: "/placeholder.svg" },
+  {
+    value: "MSFT",
+    label: "Microsoft (MSFT)",
+    logo: "/assets/AddAssetLogo/MSFT.png",
+  },
+  {
+    value: "AAPL",
+    label: "Apple (AAPL)",
+    logo: "/assets/AddAssetLogo/AAPL.png",
+  },
   { value: "TSLA", label: "Tesla (TSLA)", logo: "/placeholder.svg" },
 ];
 
@@ -75,6 +120,7 @@ export const AddAssetModal = ({
   const [totalValue, setTotalValue] = useState<number | null>(null);
   const { toast } = useToast();
 
+  
   const form = useForm<FormData>({
     resolver: zodResolver(formSchema),
     defaultValues: {
@@ -147,10 +193,7 @@ export const AddAssetModal = ({
               render={({ field }) => (
                 <FormItem>
                   <FormLabel className="text-white">Select Asset</FormLabel>
-                  <Select
-                    onValueChange={handleSymbolChange}
-                    defaultValue={field.value}
-                  >
+                  <Select onValueChange={handleSymbolChange} defaultValue={field.value}>
                     <FormControl>
                       <SelectTrigger className="bg-slate-700 border-slate-600 text-white h-12">
                         <SelectValue placeholder="Select an asset" />

@@ -46,10 +46,19 @@ export const StockCard = ({
   const isAfterHoursPositive = afterHoursChange && afterHoursChange >= 0;
   const { formatAmount } = useCurrencyPreference();
 
+  const getLogo = (symbol: string) => {
+    const logos: { [key: string]: string } = {
+      "AAPL": "./assets/AddAssetLogo/AAPL.png"
+    }
+    return logos[symbol] || "./assets/AddAssetLogo/unknown.png";
+    };
+
 
   return (
-    <Card className="flex flex-col space-y-6 p-6 bg-slate-800 text-white hover:bg-slate-700 transition-colors">
+    <Card className="flex flex-col space-y-4 p-6 bg-slate-800 text-white hover:bg-slate-700 transition-colors">
+      {/* Header Section */}
       <div className="flex justify-between items-start gap-4">
+        {/* Logo and Name */}
         <div className="flex items-center gap-3">
           {logoUrl ? (
             <img
@@ -67,6 +76,7 @@ export const StockCard = ({
             <p className="text-sm text-gray-400">{symbol}</p>
           </div>
         </div>
+        {/* Daily Change */}
         <div className="flex flex-col items-end">
           <div className={`text-sm ${isPositive ? "text-gain" : "text-loss"}`}>
             {isPositive ? "+" : ""}
@@ -85,6 +95,7 @@ export const StockCard = ({
         </div>
       </div>
 
+      {/* Current Price and Total Value */}
       <div className="grid grid-cols-2 gap-4">
         <div>
           <div className="text-2xl font-bold">{formatAmount(price)}</div>
@@ -96,6 +107,7 @@ export const StockCard = ({
         </div>
       </div>
 
+      {/* Quantity and 52-Week Range */}
       <div className="grid grid-cols-2 gap-4">
         <div>
           <div className="text-sm text-gray-400">Quantity Owned</div>
@@ -119,6 +131,7 @@ export const StockCard = ({
         </TooltipProvider>
       </div>
 
+      {/* Open, High, and Low Prices */}
       <div className="grid grid-cols-3 gap-2 text-sm">
         <div>
           <div className="text-gray-400">Open</div>

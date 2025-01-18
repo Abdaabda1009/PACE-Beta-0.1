@@ -34,8 +34,9 @@ export const CryptoCard = ({
   const isPositive = change >= 0;
 
   const getLogo = (symbol: string) => {
-    return `/placeholder.svg`;
+    return `/assets/AddAssetLogo/${symbol}.png`;
   };
+
 
   const handleEdit = () => {
     setIsEditing(!isEditing);

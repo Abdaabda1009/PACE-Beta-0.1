@@ -15,7 +15,6 @@ import { DebtManagement } from "./pages/DebtManagement";
 import { Subscriptions } from "./pages/Subscriptions";
 import { AssetsManagement } from "./pages/AssetsManagement";
 import { Transactions } from "./pages/Transactions";
-import { Profile } from "./pages/Profile";
 import { Settings } from "./pages/Settings";
 import { Support } from "./pages/Support";
 import { ROUTES } from "./lib/constants";
@@ -94,7 +93,6 @@ const App = () => (
             <Route path="subscriptions" element={<Subscriptions />} />
             <Route path="assets-management" element={<AssetsManagement />} />
             <Route path="transactions" element={<Transactions />} />
-            <Route path="profile" element={<Profile />} />
             <Route path="settings" element={<Settings />} />
             <Route path="support" element={<Support />} />
           </Route>

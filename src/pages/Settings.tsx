@@ -42,7 +42,7 @@ export const Settings = () => {
   };
 
   return (
-    <div className="container max-w-6xl mx-auto p-1 space-y-4 ml-3">
+    <div className="container max-w-6xl mx-auto p-1 space-y-4 ml-2">
       <div className="flex items-center justify-between">
         <h1 className="text-3xl font-semibold text-white">Settings</h1>
       </div>

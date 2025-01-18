@@ -25,28 +25,28 @@ export const SpendingChartActions = ({
         <Button
           variant={timeRange === "1Y" ? "default" : "outline"}
           onClick={() => onTimeRangeChange("1Y")}
-          className="bg-[#050524] border-gray-800 text-gray-400 hover:text-white"
+          className="w-[44px] h-[44px] p-[10px] text-white bg-[#050524] hover:bg-blue-600/10 hover:text-white"
         >
           1Y
         </Button>
         <Button
           variant={timeRange === "6M" ? "default" : "outline"}
           onClick={() => onTimeRangeChange("6M")}
-          className="bg-[#050524] border-gray-800 text-gray-400 hover:text-white"
+          className="w-[44px] h-[44px] p-[10px] text-white bg-[#050524] hover:bg-blue-600/10 hover:text-white"
         >
           6M
         </Button>
         <Button
           variant={timeRange === "3M" ? "default" : "outline"}
           onClick={() => onTimeRangeChange("3M")}
-          className="bg-[#050524] border-gray-800 text-gray-400 hover:text-white"
+          className="w-[44px] h-[44px] p-[10px] text-white bg-[#050524] hover:bg-blue-600/10 hover:text-white"
         >
           3M
         </Button>
         <Button
           variant={timeRange === "1M" ? "default" : "outline"}
           onClick={() => onTimeRangeChange("1M")}
-          className="bg-[#050524] border-gray-800 text-gray-400 hover:text-white"
+          className="w-[44px] h-[44px] p-[10px] text-white bg-[#050524] hover:bg-blue-600/10 hover:text-white"
         >
           1M
         </Button>
@@ -56,13 +56,16 @@ export const SpendingChartActions = ({
           <Button
             variant="ghost"
             size="icon"
-            className="w-[44px] h-[44px] p-[10px] text-gray-400 hover:text-white bg-[#050524]"
+            className="w-[44px] h-[44px] p-[10px] text-white bg-[#050524] hover:bg-blue-600/10 hover:text-white"
           >
             <MoreVertical className="h-5 w-5" />
           </Button>
         </DropdownMenuTrigger>
-        <DropdownMenuContent align="end" className="bg-[#1A1F2C] border-gray-800">
-          <DropdownMenuItem 
+        <DropdownMenuContent
+          align="end"
+          className="bg-[#1A1F2C] border-gray-800"
+        >
+          <DropdownMenuItem
             className="text-gray-400 hover:text-white focus:text-white cursor-pointer"
             onClick={() => navigate("/analysis-goals")}
           >

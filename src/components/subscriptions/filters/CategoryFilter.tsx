@@ -29,7 +29,7 @@ export const CategoryFilter = ({
             className={`px-4 py-2 text-sm ${
               activeFilter === category.value
                 ? "bg-primary text-white"
-                : "text-gray-200 hover:text-white bg-[#242837]"
+                : "text-gray-200 hover:bg-blue-600/10 hover:text-white"
             }`}
             onClick={() => onFilterChange(category.value)}
           >

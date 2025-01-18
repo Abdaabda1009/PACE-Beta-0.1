@@ -100,7 +100,7 @@ export const StockSection = () => {
         <h2 className="text-3xl mr-2 mt-2 font-bold">Track Your Stocks</h2>
         <Button
           onClick={() => setIsAddStockModalOpen(true)}
-          className="w-[44px] h-[44px] bg-[#050524] text-gray-400 hover:bg-gradient-to-r from-[#ADADAD] to-[#1A7DAF]"
+          className="w-[44px] h-[44px] text-white bg-[#050524] hover:bg-blue-600/10 hover:text-white "
         >
           <Plus className="w-5 h-5 gap-2 " />
         </Button>

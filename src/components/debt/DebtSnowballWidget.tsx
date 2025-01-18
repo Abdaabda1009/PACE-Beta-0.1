@@ -159,7 +159,7 @@ export const DebtSnowballWidget = () => {
         <div className="flex gap-3 mt-4">
           <Button
             onClick={handleAddExtraPayment}
-            className="felx-1 bg-[#050524] p-6 text-gray-100 gap-3 hover:bg-gradient-to-r from-[#ADADAD] to-[#1A7DAF]"
+            className=" w-[500px] h-[40px] felx-1 text-white bg-[#050524] hover:bg-blue-600/10 hover:text-white"
           >
             <Plus className="w-4 h-4 mr-2" />
             Add Extra Payment
@@ -167,7 +167,7 @@ export const DebtSnowballWidget = () => {
           <Button
             onClick={handleReassessStrategy}
             variant="outline"
-            className="flex-1 bg-[#050524] p-6 text-gray-100 gap-3 hover:bg-gradient-to-r from-[#ADADAD] to-[#1A7DAF]"
+            className="w-[500px] h-[40px] felx-1 text-white bg-[#050524] hover:bg-blue-600/10 hover:text-white"
           >
             <RefreshCw className="w-4 h-4 mr-2" />
             Reassess Strategy

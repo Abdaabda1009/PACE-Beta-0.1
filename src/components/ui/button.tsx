@@ -12,9 +12,9 @@ const buttonVariants = cva(
         default:
           "`text-whithe px-8 py-3 bg-[#00000]  justify-center items-center gap-2.5 inline-flex`}",
         destructive:
-          "`text-whithe px-8 py-3 bg-[#18799f]  justify-center items-center gap-2.5 inline-flex`}",
+          "`w-[44px] h-[44px] p-[10px] text-white bg-[#050524] hover:bg-blue-600/10 hover:text-white`}",
         outline:
-          "`text-whithe px-8 py-3 bg-[#18799f]  justify-center items-center gap-2.5 inline-flex`}",
+          "`text-white bg-[#050524] hover:bg-blue-600/10 hover:text-white`}",
         secondary:
           "bg-secondary text-secondary-foreground hover:bg-secondary/80",
         ghost: "hover:bg-dashboard-background/100",

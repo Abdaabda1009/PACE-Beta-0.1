@@ -98,7 +98,7 @@ export const CryptoSection = () => {
         <h2 className="text-3xl mr-2 mt-2 font-bold">Track Your Crypto</h2>
         <Button
           onClick={() => setIsAddCryptoModalOpen(true)}
-          className="w-[44px] h-[44px] mr-1 bg-[#050524] text-gray-400 hover:bg-gradient-to-r from-[#ADADAD] to-[#1A7DAF]"
+          className="w-[44px] h-[44px] text-white bg-[#050524] hover:bg-blue-600/10 hover:text-white"
         >
           <Plus className="w-6 h-6 gap-2" />
         </Button>

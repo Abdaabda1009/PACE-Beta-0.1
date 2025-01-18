@@ -26,7 +26,7 @@ export const GoalHeader = ({ onEditClick, onAddClick, onDeleteClick, hasGoals }:
           <Button
             variant="outline"
             size="sm"
-            className="w-[44px] h-[44px] mr-1 bg-[#050524] text-gray-400 hover:bg-gradient-to-r from-[#ADADAD] to-[#1A7DAF]"
+            className="w-[44px] h-[44px] text-white bg-[#050524] hover:bg-blue-600/10 hover:text-white"
           >
             <MoreVertical className="h-4 w-4" />
           </Button>

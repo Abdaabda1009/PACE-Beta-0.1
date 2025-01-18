@@ -56,7 +56,7 @@ export const Transactions = () => {
   return (
     <div className="space-y-4 max-w-7x2 mx-auto">
       <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
-        <h1 className="text-2xl font-semibold">Transactions</h1>
+        <h1 className="text-3xl font-semibold text-white">Transactions</h1>
         <Button
           onClick={() => setIsAddDialogOpen(true)}
           className="w-[44px] h-[44px] bg-[#050524] text-gray-400 hover:bg-gradient-to-r from-[#ADADAD] to-[#1A7DAF]"

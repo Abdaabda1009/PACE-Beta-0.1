@@ -25,7 +25,7 @@ export const CommunityPanel = () => {
       <p className="text-gray-400 text-sm mb-8">
         Connect with traders and investors from around the world
       </p>
-      <Button className="w-full bg-[#242837] bg-[#050524] hover:bg-gradient-to-r from-[#ADADAD] to-[#1A7DAF]">
+      <Button className="w-full h-[full] p-3 text-white bg-[#050524] hover:bg-blue-600/10 hover:text-white">
         <UserPlus className="w-5 h-5" />
         Join Now
       </Button>

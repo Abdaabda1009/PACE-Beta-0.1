@@ -22,7 +22,7 @@ export const BudgetActions = ({ onExport, onAdd }: BudgetActionsProps) => {
         <Button
           variant="ghost"
           size="icon"
-          className="w-[44px] h-[44px] mr-1 bg-[#050524] text-gray-400 hover:bg-gradient-to-r from-[#ADADAD] to-[#1A7DAF]"
+          className=" w-[44px] h-[44px] text-white bg-[#050524] hover:bg-blue-600/10 hover:text-white"
         >
           <MoreVertical className="h-5 w-5" />
         </Button>

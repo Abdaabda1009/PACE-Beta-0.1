@@ -14,7 +14,7 @@ import {
 export const AnalysisGoals = () => {
   return (
     <div className="space-y-6">
-      <h1 className="text-2xl font-semibold">Analysis & Goals</h1>
+      <h1 className="text-3xl font-semibold text-white">Analysis & Goals</h1>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         <GoalsCard />
         <div className="space-y-6">

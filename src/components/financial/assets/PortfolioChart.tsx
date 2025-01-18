@@ -64,7 +64,7 @@ export const PortfolioChart = () => {
       <div className="flex items-center justify-between mb-6">
         <div className="flex items-center gap-4">
           <Select value={selectedToken} onValueChange={setSelectedToken}>
-            <SelectTrigger className="bg-[#050524] text-gray-100 gap-3 hover:bg-gradient-to-r from-[#ADADAD] to-[#1A7DAF]">
+            <SelectTrigger className="w-full h-[44px] gap-2 text-white bg-[#050524] hover:bg-blue-600/10 hover:text-white">
               <SelectValue placeholder="Select token" />
             </SelectTrigger>
             <SelectContent className="bg-gradient-to-r from-[#ADADAD] to-[#1A7DAF] border-gray-800">
@@ -80,7 +80,7 @@ export const PortfolioChart = () => {
               key={timeframe}
               variant={selectedTimeframe === timeframe ? "default" : "outline"}
               onClick={() => setSelectedTimeframe(timeframe)}
-              className="bg-[#050524] text-gray-100 gap-3 hover:bg-gradient-to-r from-[#ADADAD] to-[#1A7DAF]"
+              className="w-[44px] h-[44px] text-white bg-[#050524] hover:bg-blue-600/10 hover:text-white"
             >
               {timeframe}
             </Button>

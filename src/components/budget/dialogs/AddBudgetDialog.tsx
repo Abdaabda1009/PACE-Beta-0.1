@@ -117,14 +117,17 @@ export const AddBudgetDialog = ({
         <div className="space-y-4 py-4">
           <div className="space-y-2">
             <label className="text-sm text-gray-400">Category</label>
-            <Select value={selectedCategory} onValueChange={setSelectedCategory}>
+            <Select
+              value={selectedCategory}
+              onValueChange={setSelectedCategory}
+            >
               <SelectTrigger className="bg-[#242837] border-gray-800 text-white">
                 <SelectValue placeholder="Select a category" />
               </SelectTrigger>
               <SelectContent className="bg-[#1A1F2C] border-gray-800">
                 {BUDGET_CATEGORIES.map((category) => (
-                  <SelectItem 
-                    key={category.id} 
+                  <SelectItem
+                    key={category.id}
                     value={category.id}
                     className="text-gray-400 hover:text-white focus:text-white cursor-pointer"
                   >
@@ -173,7 +176,10 @@ export const AddBudgetDialog = ({
           >
             Cancel
           </Button>
-          <Button onClick={handleAdd} disabled={isLoading}>
+          <Button variant="default" 
+          onClick={handleAdd} 
+          disabled={isLoading}
+          >
             Add Category
           </Button>
         </DialogFooter>

@@ -102,7 +102,7 @@ export const SubscriptionOverview = ({
           <Button
             variant="ghost"
             size="icon"
-            className="w-[44px] h-[44px] p-[10px] text-gray-400 hover:text-white bg-[#242837]"
+            className="text-white bg-[#050524] hover:bg-blue-600/10 hover:text-white"
             onClick={() => setIsAddDialogOpen(true)}
           >
             <Plus className="h-5 w-5" />
@@ -112,7 +112,7 @@ export const SubscriptionOverview = ({
               <Button
                 variant="ghost"
                 size="icon"
-                className="w-[44px] h-[44px] p-[10px] text-gray-400 hover:text-white bg-[#242837]"
+                className="text-white bg-[#050524] hover:bg-blue-600/10 hover:text-white"
               >
                 <MoreVertical className="h-5 w-5" />
               </Button>
@@ -150,7 +150,7 @@ export const SubscriptionOverview = ({
               date={sub.date}
               category={sub.category}
               frequency={sub.frequency}
-              email= {sub.email}
+              email={sub.email}
               onEdit={() => onEditSubscription(sub)}
               onSubscriptionDeleted={onSubscriptionUpdated}
             />

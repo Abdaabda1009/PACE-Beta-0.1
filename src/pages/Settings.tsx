@@ -9,12 +9,14 @@ import {
   Link2,
   Settings as SettingsIcon,
 } from "lucide-react";
-import { Button } from "@/components/ui/button";
-import { useToast } from "@/hooks/use-toast";
-import { ThemeCard } from "@/components/settings/ThemeCard";
-import { LanguageCard } from "@/components/settings/LanguageCard";
-import { ChartStyleCard } from "@/components/settings/ChartStyleCard";
-import { CookieCard } from "@/components/settings/CookieCard";
+import { AccountSettings } from "@/components/settings/Account/AccpuntSettings/AccountSettings";
+import { ProfileSettings } from "@/components/settings/profile/ProfileSettings/ProfileSettings";
+import { AppearanceSettings } from "@/components/settings/Apperance/ApperanceSettings/ApperanceSettings";
+import { SecuritySettings } from "@/components/settings/security/SecuritySettings/SecuritySettings";
+import { NotificationSettings } from "@/components/settings/notifications/NotificationSettings.tsx/NotificationSettings";
+import { BillingSettings } from "@/components/settings/billing/BillingSettings/BillingSettings";
+import { IntegrationsSettings } from "@/components/settings/integrations/IntegrationsSettings/IntegrationsSettings";
+ 
 
 const settingsTabs = [
   { id: "account", label: "Account", icon: User },
@@ -28,21 +30,9 @@ const settingsTabs = [
 
 export const Settings = () => {
   const [activeTab, setActiveTab] = useState("account");
-  const [theme, setTheme] = useState("system");
-  const [language, setLanguage] = useState("en");
-  const [chartStyle, setChartStyle] = useState("default");
-  const [cookieConsent, setCookieConsent] = useState(true);
-  const { toast } = useToast();
-
-  const handleSaveChanges = () => {
-    toast({
-      title: "Settings saved",
-      description: "Your appearance settings have been updated successfully.",
-    });
-  };
 
   return (
-    <div className="container max-w-6xl mx-auto p-1 space-y-4 ml-2">
+    <div className="container max-w-6xl mx-auto p-2 space-y-8">
       <div className="flex items-center justify-between">
         <h1 className="text-3xl font-semibold text-white">Settings</h1>
       </div>
@@ -53,7 +43,7 @@ export const Settings = () => {
         onValueChange={setActiveTab}
         className="w-full"
       >
-        <TabsList className="w-full justify-start gap-2 bg-dashboard-card p-2 rounded-xl h-auto flex-wrap">
+        <TabsList className="w-full justify-start gap-2 bg-dashboard-card p-2 rounded-xl h-auto flex-wrap ">
           {settingsTabs.map((tab) => {
             const Icon = tab.icon;
             return (
@@ -70,32 +60,32 @@ export const Settings = () => {
         </TabsList>
 
         <div className="mt-8">
-          <TabsContent value="appearance" className="space-y-8">
-            <div className="grid gap-8">
-              <ThemeCard theme={theme} setTheme={setTheme} />
-              <LanguageCard language={language} setLanguage={setLanguage} />
-              <ChartStyleCard
-                chartStyle={chartStyle}
-                setChartStyle={setChartStyle}
-              />
-              <CookieCard
-                cookieConsent={cookieConsent}
-                setCookieConsent={setCookieConsent}
-              />
-            </div>
-
-            <div className="flex justify-end gap-4 pt-4">
-              <Button variant="outline">Cancel</Button>
-              <Button onClick={handleSaveChanges}>Save Changes</Button>
-            </div>
-          </TabsContent>
           <TabsContent value="account">
-            <div className="space-y-6">
-              <h2 className="text-xl font-semibold">Account Settings</h2>
-              <p className="text-gray-400">
-                Manage your account preferences and settings.
-              </p>
-            </div>
+            <AccountSettings />
+          </TabsContent>
+
+          <TabsContent value="profile">
+            <ProfileSettings />
+          </TabsContent>
+
+          <TabsContent value="security">
+            <SecuritySettings />
+          </TabsContent>
+
+          <TabsContent value="appearance">
+            <AppearanceSettings />
+          </TabsContent>
+
+          <TabsContent value="notifications">
+              < NotificationSettings />
+          </TabsContent>
+
+          <TabsContent value="billing">
+            < BillingSettings />
+          </TabsContent>
+
+          <TabsContent value="integrations">
+            < IntegrationsSettings />
           </TabsContent>
         </div>
       </Tabs>

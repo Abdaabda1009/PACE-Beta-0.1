@@ -17,7 +17,7 @@ export const LanguageCard = ({ language, setLanguage }: LanguageCardProps) => {
     <Card className="p-6 bg-dashboard-card border-gray-700">
       <h3 className="text-lg font-medium mb-4">Language & Region</h3>
       <div className="space-y-4">
-        <div className="flex flex-col space-y-2">
+        <div className="flex flex-col space-y-2 ">
           <Label htmlFor="language" className="flex items-center gap-2">
             <Globe className="w-4 h-4" />
             Display Language
@@ -28,9 +28,9 @@ export const LanguageCard = ({ language, setLanguage }: LanguageCardProps) => {
             </SelectTrigger>
             <SelectContent>
               <SelectItem value="en">English</SelectItem>
-              <SelectItem value="es">Español</SelectItem>
-              <SelectItem value="fr">Français</SelectItem>
-              <SelectItem value="de">Deutsch</SelectItem>
+              <SelectItem value="se">Swedish</SelectItem>
+              <SelectItem value="d">Danish</SelectItem>
+              <SelectItem value="nw">Norwegian</SelectItem>
             </SelectContent>
           </Select>
         </div>

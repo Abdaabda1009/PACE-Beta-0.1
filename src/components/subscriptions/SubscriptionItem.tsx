@@ -2,10 +2,10 @@ import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { supabase } from "@/integrations/supabase/client";
 import { toast } from "@/hooks/use-toast";
-import { Pencil, Trash2, Mail, Calendar, Tag } from "lucide-react";
+import { Pencil, Trash2 } from "lucide-react";
 import { DeleteSubscriptionDialog } from "../subscriptions/DeleteSubscriptionDialog";
 import { useCurrencyPreference } from "@/hooks/useCurrencyPreference";
-import { SubscriptionDetails } from "../subscriptions/SubscriptionDetails";
+import { TableRow, TableCell } from "@/components/ui/table";
 
 interface SubscriptionItemProps {
   id: string;
@@ -16,6 +16,8 @@ interface SubscriptionItemProps {
   image?: string;
   frequency?: string;
   category?: string;
+  status?: string;
+  paymentMethod?: string;
   onEdit: () => void;
   onSubscriptionDeleted: () => void;
 }
@@ -29,6 +31,8 @@ export const SubscriptionItem = ({
   image,
   frequency = "monthly",
   category = "other",
+  status = "active",
+  paymentMethod = "credit_card",
   onEdit,
   onSubscriptionDeleted,
 }: SubscriptionItemProps) => {
@@ -36,7 +40,6 @@ export const SubscriptionItem = ({
   const [isDeleting, setIsDeleting] = useState(false);
   const { formatAmount, convertAmount } = useCurrencyPreference();
 
-  // Set up real-time subscription for updates
   useEffect(() => {
     const channel = supabase
       .channel("subscription_updates")
@@ -112,8 +115,8 @@ export const SubscriptionItem = ({
     } catch (error) {
       console.error("Error deleting subscription:", error);
       toast({
-        title: "Error",
-        description: "Failed to delete subscription",
+        title: "Failed to delete subscription",
+        description: "Oops! Something went wrong. Please try again. If the issue persists, kindly report the problem to our support team. We're here to help!😊",
         variant: "destructive",
       });
     } finally {
@@ -121,66 +124,83 @@ export const SubscriptionItem = ({
     }
   };
 
+  const getStatusColor = (status: string) => {
+    switch (status.toLowerCase()) {
+      case "active":
+        return "bg-green-500/10 text-green-500";
+      case "inactive":
+        return "bg-gray-500/10 text-gray-500";
+      case "pending":
+        return "bg-yellow-500/10 text-yellow-500";
+      case "cancelled":
+        return "bg-red-500/10 text-red-500";
+      default:
+        return "bg-gray-500/10 text-gray-500";
+    }
+  };
+
+  const formatPaymentMethod = (method: string) => {
+    return method
+      .split("_")
+      .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
+      .join(" ");
+  };
+
   return (
-    <div className="py-4 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 sm:gap-2">
-      <div className="flex items-center gap-3 w-full sm:w-auto">
-        {image && (
-          <img
-            src={image}
-            alt={name}
-            className="w-12 h-12 rounded-full object-fit"
-          />
-        )}
-        <div className="flex-1">
-          <div className="flex items-center gap-2 flex-wrap">
-            <h3 className="text-white font-medium">{name}</h3>
-            <div className="flex items-center gap-2 text-sm text-gray-400">
-              {email && (
-                <div className="flex items-center gap-1">
-                  <Mail className="h-4 w-4" aria-label={`Email: ${email}`} />
-                  <span className="hidden sm:inline">{email}</span>
-                </div>
-              )}
-              <div className="flex items-center gap-1">
-                <Calendar className="h-4 w-4" aria-label="Frequency" />
-                <span className="hidden sm:inline">{frequency}</span>
-              </div>
-              <div className="flex items-center gap-1">
-                <Tag className="h-4 w-4" aria-label="Category" />
-                <span className="hidden sm:inline">{category}</span>
-              </div>
-            </div>
-          </div>
-          <p className="text-sm text-gray-400">Next payment: {date}</p>
+    <TableRow className="border-gray-800">
+      <TableCell>
+        <div className="flex items-center gap-2">
+          {image && (
+            <img
+              src={image}
+              alt={name}
+              className="w-8 h-8 rounded-lg object-cover"
+            />
+          )}
+          <span className="text-white">{name}</span>
         </div>
-      </div>
-      <div className="flex items-center gap-2 w-full sm:w-auto justify-end">
-        <p className="text-white font-medium mr-4">
-          {formatAmount(convertAmount(amount))}
-        </p>
-        <Button
-          variant="ghost"
-          size="icon"
-          className="w-8 h-8 text-gray-400 hover:text-white"
-          onClick={onEdit}
-        >
-          <Pencil className="h-4 w-4" />
-        </Button>
-        <Button
-          variant="ghost"
-          size="icon"
-          className="w-8 h-8 text-gray-400 hover:text-white"
-          onClick={() => setShowDeleteDialog(true)}
-        >
-          <Trash2 className="h-4 w-4" />
-        </Button>
-      </div>
+      </TableCell>
+      <TableCell className="text-gray-400">{category}</TableCell>
+      <TableCell className="text-white font-medium">
+        {formatAmount(convertAmount(amount))}
+      </TableCell>
+      <TableCell className="text-gray-400">
+        {formatPaymentMethod(paymentMethod)}
+      </TableCell>
+      <TableCell className="text-gray-400">{date}</TableCell>
+      <TableCell className="text-gray-400">
+        <span className={`px-2 py-1 rounded-full ${getStatusColor(status)}`}>
+          {status.charAt(0).toUpperCase() + status.slice(1)}
+        </span>
+      </TableCell>
+      <TableCell className="text-gray-400">{frequency}</TableCell>
+      <TableCell className="text-gray-400">{date}</TableCell>
+      <TableCell>
+        <div className="flex items-center gap-2">
+          <Button
+            variant="ghost"
+            size="icon"
+            className="w-8 h-8 text-gray-400 hover:text-white"
+            onClick={onEdit}
+          >
+            <Pencil className="h-4 w-4" />
+          </Button>
+          <Button
+            variant="ghost"
+            size="icon"
+            className="w-8 h-8 text-gray-400 hover:text-white"
+            onClick={() => setShowDeleteDialog(true)}
+          >
+            <Trash2 className="h-4 w-4" />
+          </Button>
+        </div>
+      </TableCell>
       <DeleteSubscriptionDialog
         open={showDeleteDialog}
         onOpenChange={setShowDeleteDialog}
         onConfirm={handleDelete}
         isLoading={isDeleting}
       />
-    </div>
+    </TableRow>
   );
 };

@@ -12,13 +12,21 @@ import {
 import { AddSubscriptionDialog } from "@/components/subscriptions/AddSubscriptionDialog";
 import { Skeleton } from "@/components/ui/skeleton";
 import { CategoryFilter } from "@/components/subscriptions/filters/CategoryFilter";
-import { SUBSCRIPTION_CATEGORIES } from "../subscriptions/filters/constants";
+import {
+  Table,
+  TableRow,
+  TableHead,
+  TableBody,
+} from "@/components/ui/table";
+import { SubscriptionTableHeader } from "../subscriptions/SubscriptionTableHeader";
+import { Sub } from "@radix-ui/react-dropdown-menu";
 
 interface Subscription {
   id: string;
   name: string;
   amount: number;
   date: string;
+  status: string;
   image_url?: string;
   category: string;
   frequency?: string;
@@ -32,24 +40,22 @@ interface SubscriptionOverviewProps {
   onSubscriptionUpdated: () => void;
 }
 
-export const SubscriptionOverview = ({
-  subscriptions,
+export const SubscriptionOverview = ({ 
+  subscriptions, 
   isLoading,
   onEditSubscription,
-  onSubscriptionUpdated,
+  onSubscriptionUpdated 
 }: SubscriptionOverviewProps) => {
   const [isAddDialogOpen, setIsAddDialogOpen] = useState(false);
   const [activeFilter, setActiveFilter] = useState("all");
   const navigate = useNavigate();
 
   const handleViewAll = () => {
-    navigate("/subscriptions");
+    navigate('/subscriptions');
   };
 
-  const filteredSubscriptions = subscriptions.filter((sub) =>
-    activeFilter === "all"
-      ? true
-      : (sub.category?.toLowerCase() || "other") === activeFilter
+  const filteredSubscriptions = subscriptions.filter(sub => 
+    activeFilter === "all" ? true : (sub.category?.toLowerCase() || 'other') === activeFilter
   );
 
   const renderSkeletonItems = () => (
@@ -102,7 +108,7 @@ export const SubscriptionOverview = ({
           <Button
             variant="ghost"
             size="icon"
-            className="text-white bg-[#050524] hover:bg-blue-600/10 hover:text-white"
+            className="`text-white bg-[#050524] hover:bg-blue-600/10 hover:text-white"
             onClick={() => setIsAddDialogOpen(true)}
           >
             <Plus className="h-5 w-5" />
@@ -138,31 +144,43 @@ export const SubscriptionOverview = ({
         onFilterChange={setActiveFilter}
       />
 
-      <div className="divide-y divide-gray-800">
-        {filteredSubscriptions.length > 0 ? (
-          filteredSubscriptions.map((sub) => (
-            <SubscriptionItem
-              key={sub.id}
-              id={sub.id}
-              name={sub.name}
-              image={sub.image_url || ""}
-              amount={sub.amount}
-              date={sub.date}
-              category={sub.category}
-              frequency={sub.frequency}
-              email={sub.email}
-              onEdit={() => onEditSubscription(sub)}
-              onSubscriptionDeleted={onSubscriptionUpdated}
-            />
-          ))
-        ) : (
-          <div className="text-center text-gray-400 py-4">
-            {activeFilter === "all"
-              ? "No subscriptions yet. Click the Add button to create your first entry!"
-              : `No ${activeFilter} subscriptions found.`}
-          </div>
-        )}
+      <div className="overflow-x-auto">
+        <Table>
+          <SubscriptionTableHeader />
+          <TableBody>
+            {filteredSubscriptions.length > 0 ? (
+              filteredSubscriptions.map((sub) => (
+                <SubscriptionItem
+                  key={sub.id}
+                  id={sub.id}
+                  name={sub.name}
+                  image={sub.image_url || ""}
+                  amount={sub.amount}
+                  date={sub.date}
+                  status={sub.status}
+                  category={sub.category}
+                  frequency={sub.frequency}
+                  email={sub.email}
+                  onEdit={() => onEditSubscription(sub)}
+                  onSubscriptionDeleted={onSubscriptionUpdated}
+                />
+              ))
+            ) : (
+              <TableRow>
+                <TableHead
+                  colSpan={9}
+                  className="text-center text-gray-400 py-4"
+                >
+                  {activeFilter === "all"
+                    ? "No subscriptions yet. Click the Add button to create your first entry!"
+                    : `No ${activeFilter} subscriptions found.`}
+                </TableHead>
+              </TableRow>
+            )}
+          </TableBody>
+        </Table>
       </div>
+
       <AddSubscriptionDialog
         open={isAddDialogOpen}
         onOpenChange={setIsAddDialogOpen}

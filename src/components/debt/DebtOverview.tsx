@@ -1,5 +1,7 @@
 import { useState } from "react";
 import {
+  Bell,
+  AlertCircle,
   MoreVertical,
   Edit,
   Eye,
@@ -12,6 +14,7 @@ import {
   Plus,
 } from "lucide-react";
 import { Button } from "../ui/button";
+import { Progress } from "../ui/progress";
 import { DebtItem } from "./DebtItem";
 import { EditDebtDialog } from "./EditDebtDialog";
 import { AddDebtDialog } from "./AddDebtDialog";
@@ -66,6 +69,35 @@ export const DebtOverview = () => {
     }
   };
 
+  const calculateTotalDebt = () => {
+    if (!debts) return 0;
+    return debts.reduce((sum, debt) => sum + debt.total_debt, 0);
+  };
+  const calculatePaidAmount = () => {
+    if (!debts) return 0;
+    return debts.reduce(
+      (sum, debt) => sum + (debt.total_debt - debt.remaining_debt),
+      0
+    );
+  };
+  const getProgressPercentage = () => {
+    const totalDebt = calculateTotalDebt();
+    if (totalDebt === 0) return 0;
+    return (calculatePaidAmount() / totalDebt) * 100;
+  };
+  const getNextPaymentDue = () => {
+    if (!debts || debts.length === 0) return null;
+    const now = new Date();
+    return debts.reduce((earliest, debt) => {
+      const dueDate = new Date(debt.due_date);
+
+      return !earliest || dueDate < new Date(earliest.due_date)
+      ? debt
+      : earliest;
+    }, debts [0]);
+  };
+
+
   if (isLoading) {
     return (
       <div className="bg-dashboard-card px-8 py-6 rounded-xl border border-gray-800">
@@ -81,6 +113,8 @@ export const DebtOverview = () => {
       </div>
     );
   }
+  
+  const nextPayment = getNextPaymentDue();
 
   const formattedDebts = debts.map((debt) => ({
     ...debt,
@@ -145,6 +179,49 @@ export const DebtOverview = () => {
             </DropdownMenuItem>
           </DropdownMenuContent>
         </DropdownMenu>
+      </div>
+      <div className="grid grid-cols-2 gap-4 mb-6">
+        <div className="bg-[#1A1F2C] p-4 rounded-lg">
+          <div className="flex items-center gap-2 mb-2">
+            <DollarSign className="w-5 h-5 text-primary" />
+            <span className="text-sm text-gray-400">Total Debt</span>
+          </div>
+          <p className="text-2xl font-bold text-white">
+            {formatAmount(calculateTotalDebt())}
+          </p>
+        </div>
+
+        <div className="bg-[#1A1F2C] p-4 rounded-lg">
+          <div className="flex items-center gap-2 mb-2">
+            <Bell className="w-5 h-5 text-yellow-500" />
+            <span className="text-sm text-gray-400">Next Payment Due</span>
+          </div>
+          <p className="text-2x1 font-bold text-white">
+            No payments due
+          </p>
+        </div>
+      </div>
+      {/* Progress Section */}
+      <div className="bg-[#1A1F2C] p-4 rounded-lg mb-6">
+        <div className="flex justify-between items-center mb-2">
+          <span className="text-sm text-gray-400">Payment Progress</span>
+          <span className="text-sm text-white">
+            {getProgressPercentage().toFixed(1)}%
+          </span>
+        </div>
+        <Progress
+          value={getProgressPercentage()}
+          className="h-2 bg-gray-700"
+          indicatorClassName="bg-primary"
+        />
+        <div className="flex justify-between mt-2">
+          <span className="text-xs text-gray-400">
+            Paid: {formatAmount(calculatePaidAmount())}
+          </span>
+          <span className="text-xs text-gray-400">
+            Total: {formatAmount(calculateTotalDebt())}
+          </span>
+        </div>
       </div>
       {formattedDebts.length > 0 ? (
         <div className="grid grid-cols-1 gap-4">

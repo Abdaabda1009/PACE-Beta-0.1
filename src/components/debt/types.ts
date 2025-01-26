@@ -1,6 +1,11 @@
 import { ReactNode } from "react";
 
 export interface Debt {
+  remaining_debt_amount: number;
+  monthly_payment(monthly_payment: any): ReactNode;
+  due_date: string | number | Date;
+  remaining_debt: any;
+  total_debt: number;
   id: string;
   title: string;
   totalDebt: string;

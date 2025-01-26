@@ -7,9 +7,11 @@ import { Copyright } from "./Copyright";
 
 export const Footer = () => {
   const serviceLinks = [
-    { to: "/AboutUs", label: "About Us" },
+    { to: "/Product", label: "Product" },
     { to: "/Features", label: "Features" },
     { to: "/blog", label: "Blog" },
+    { to: "/Changelog", label: "Changelog" },
+    { to:"/Company", label: "Company"},
   ];
 
   const communityLinks = [

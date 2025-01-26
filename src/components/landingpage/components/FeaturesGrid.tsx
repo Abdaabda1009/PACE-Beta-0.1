@@ -56,7 +56,7 @@ export const FeaturesGrid = () => {
   ];
 
   return (
-    <div className="py-12 bg-black">
+    <div className="py-12">
       <div className="container px-0">
         <div className="text-center mb-12">
           <h2 className="text-3xl font-bold text-white mb-4">
@@ -70,7 +70,7 @@ export const FeaturesGrid = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
           {features.map((feature, index) => (
             <SpotlightCard key={index} className="relative h-full">
-              <Card className="relative border-gray-900 bg-[#18799f] inline-flex ">
+              <Card className="transparency inline-flex ">
                 {/* Content */}
                 <CardContent className="relative z-10 pt-6">
                   <div className="rounded-lg p-2 w-12 h-12 bg-blue-100/10 flex items-center justify-center mb-6 ">

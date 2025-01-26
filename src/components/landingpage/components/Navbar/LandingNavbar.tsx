@@ -1,25 +1,32 @@
 import { useState } from "react";
 import { useIsMobile } from "@/hooks/use-mobile";
-import { MobileMenu } from "@/components/landingpage/components/Navbar/MobileMenu";
-import { DesktopMenu } from "@/components/landingpage/components/Navbar/DesktopMenu";
+import { MobileMenu } from "./MobileMenu";
+import { DesktopMenu } from "./DesktopMenu";
 
 export const LandingNavbar = () => {
   const isMobile = useIsMobile();
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <nav className="relative z-50">
-      <div className="flex justify-between items-center mb-8 md:mb-16 lg:mb-24 px-4 md:px-6 py-4 md:py-6">
-        <img
-        src="assets/logo.png"
-        alt="Logo"
-        className="w-8 h-8 md:w-24 md:h-12 "></img>
+    <nav className="fixed top-0 left-0 right-0 z-50 bg-transparent backdrop-blur-sm border-b border-white/5">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-12">
+        <div className="flex justify-between items-center h-16 sm:h-18 md:h-20">
+          <div className="flex items-center gap-2 sm:gap-3">
+            <img
+              src="/assets/logoicon.png"
+              alt="Logo"
+              className="w-7 h-7 md:w-12 md:h-12"
+            />
+          </div>
 
-        {isMobile ? (
-          <MobileMenu isOpen={isOpen} setIsOpen={setIsOpen} />
-        ) : (
-          <DesktopMenu />
-        )}
+          {isMobile ? (
+            <div className="flex items-center">
+              <MobileMenu isOpen={isOpen} setIsOpen={setIsOpen} />
+            </div>
+          ) : (
+            <DesktopMenu />
+          )}
+        </div>
       </div>
     </nav>
   );

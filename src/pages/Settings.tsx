@@ -32,7 +32,7 @@ export const Settings = () => {
   const [activeTab, setActiveTab] = useState("account");
 
   return (
-    <div className="container max-w-6xl mx-auto p-2 space-y-8">
+    <div className="container max-w-10x2 mx-auto p-1 space-y-4 ml-1">
       <div className="flex items-center justify-between">
         <h1 className="text-3xl font-semibold text-white">Settings</h1>
       </div>
@@ -77,15 +77,15 @@ export const Settings = () => {
           </TabsContent>
 
           <TabsContent value="notifications">
-              < NotificationSettings />
+            <NotificationSettings />
           </TabsContent>
 
           <TabsContent value="billing">
-            < BillingSettings />
+            <BillingSettings />
           </TabsContent>
 
           <TabsContent value="integrations">
-            < IntegrationsSettings />
+            <IntegrationsSettings />
           </TabsContent>
         </div>
       </Tabs>

@@ -63,7 +63,7 @@ export const DebtItemDetails = ({
         <DebtDetail label="Debt-Income ratio" value={debtToIncome} />
         <DebtDetail
           label="Highest Interest Rate"
-          value={<span className="text-dashboard-error">18.5%</span>}
+          value={<span className="text-dashboard-error">0%</span>}
         />
       </div>
     </>

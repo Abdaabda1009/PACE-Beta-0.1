@@ -7,12 +7,12 @@ interface CategoryFilterProps {
 
 const SUBSCRIPTION_CATEGORIES = [
   { label: "All", value: "all" },
-  { label: "Technology", value: "technology" },
-  { label: "Streaming", value: "streaming" },
-  { label: "Shopping", value: "shopping" },
-  { label: "Entertainment", value: "entertainment" },
-  { label: "Utilities", value: "utilities" },
-  { label: "Other", value: "other" },
+  { label: "Technology", value: "Technology" },
+  { label: "Streaming", value: "Streaming" },
+  { label: "Shopping", value: "Shopping" },
+  { label: "Entertainment", value: "Entertainment" },
+  { label: "Utilities", value: "Utilities" },
+  { label: "Other", value: "Other" },
 ];
 
 export const CategoryFilter = ({

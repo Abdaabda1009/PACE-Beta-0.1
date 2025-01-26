@@ -10,7 +10,7 @@ const buttonVariants = cva(
     variants: {
       variant: {
         default:
-          "`text-whithe px-8 py-3 bg-[#00000]  justify-center items-center gap-2.5 inline-flex`}",
+          "`text-whithe px-8 py-3 bg-[#00000] justify-center items-center gap-2.5 inline-flex`}",
         destructive:
           "`w-[44px] h-[44px] p-[10px] text-white bg-[#050524] hover:bg-blue-600/10 hover:text-white`}",
         outline:

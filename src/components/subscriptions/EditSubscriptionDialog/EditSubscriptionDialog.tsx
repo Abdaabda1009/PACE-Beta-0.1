@@ -65,8 +65,9 @@ export const EditSubscriptionDialog = ({
 
       if (!user) {
         toast({
-          title: "Error",
-          description: "You must be logged in to update a subscription",
+          title: "Oops! Something went wrong",
+          description:
+            "Please try again. If the issue persists, kindly report the problem to our support team. We're here to help!😊",
           variant: "destructive",
         });
         return;
@@ -121,7 +122,8 @@ export const EditSubscriptionDialog = ({
       console.error("Error updating subscription:", error);
       toast({
         title: "Error",
-        description: "Failed to update subscription",
+        description:
+          "Failed to update subscription, Please try again. If the issue persists, kindly report the problem to our support team. We're here to help!😊",
         variant: "destructive",
       });
     } finally {

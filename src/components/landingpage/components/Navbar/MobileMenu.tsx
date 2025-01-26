@@ -16,21 +16,29 @@ interface MobileMenuProps {
 export const MobileMenu = ({ isOpen, setIsOpen }: MobileMenuProps) => {
   return (
     <Collapsible open={isOpen} onOpenChange={setIsOpen} className="w-full">
-      <div className="flex items-center gap-2 md:gap-4">
+      <div className="flex items-center gap-3 px-2 py-2">
+        <AuthButtons />
         <CollapsibleTrigger asChild>
-          <Button variant="ghost" size="icon" className="md:hidden">
+          <Button
+            variant="ghost"
+            size="icon"
+            className="md:hidden text-white hover:bg-white/5 transition-colors"
+          >
             {isOpen ? (
-              <X className="h-6 w-6 text-white" />
+              <X className="h-5 w-5" />
             ) : (
-              <Menu className="h-6 w-6 text-white" />
+              <Menu className="h-5 w-5" />
             )}
           </Button>
         </CollapsibleTrigger>
-        <AuthButtons />
       </div>
-      <CollapsibleContent className="absolute top-full left-0 w-full bg-dashboard-background p-4 space-y-3 border-t border-white/10 shadow-lg">
-        <NavLinks />
-      </CollapsibleContent>
+      {isOpen && (
+        <CollapsibleContent className="absolute top-full left-0 w-full bg-[#0A0118]/95 backdrop-blur-sm border-t border-white/10">
+          <div className="px-4 py-4 space-y-2">
+            <NavLinks />
+          </div>
+        </CollapsibleContent>
+      )}
     </Collapsible>
   );
 };

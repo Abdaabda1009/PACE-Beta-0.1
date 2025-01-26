@@ -48,8 +48,21 @@ export default function Stack({
       : [
           {
             id: 1,
-            img: "/assets/logo.png",
+            img: "/assets/MissionAssets/Technology.png",
           },
+
+          {
+            id: 2,
+            img: "/assets/MissionAssets/Simplicity.png",
+          },
+          {
+            id: 3,
+            img: "/assets/MissionAssets/Empowerment.png",
+          },
+          {
+            id: 4,
+            img: "/assets/MissionAssets/Community.png",
+          }
         ]
   );
 

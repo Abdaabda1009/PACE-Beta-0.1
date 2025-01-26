@@ -9,11 +9,11 @@ export const PoweredBy = () => {
   ];
 
   return (
-    <div className="mt-12 lg:mt-16 bg-dashboard-card border border-blue-500/20 rounded-lg p-6 lg:p-8 mx-4 lg:mx-0">
+    <div className="mt-12 lg:mt-8 border border-blue-500/20 rounded-lg p-6 lg:p-8 mx-4 lg:mx-0">
       <div className="text-center justify-between mb-6">
         <h3 className="text-white text-lg">Powered By Leading Technologies</h3>
       </div>
-      <div className="flex items-center justify-center gap-24 sm:gap-12 flex-wrap">
+      <div className="flex items-center justify-center gap-24 sm:gap-20 flex-wrap">
         {icons.map((icon, index) => (
           <div
             key={index}

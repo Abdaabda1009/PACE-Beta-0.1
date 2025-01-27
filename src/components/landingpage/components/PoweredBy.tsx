@@ -13,17 +13,17 @@ export const PoweredBy = () => {
       <div className="text-center justify-between mb-6">
         <h3 className="text-white text-lg">Powered By Leading Technologies</h3>
       </div>
-      <div className="flex items-center justify-center gap-24 sm:gap-20 flex-wrap">
+      <div className="flex items-center justify-center gap-24 sm:gap-24 flex-wrap">
         {icons.map((icon, index) => (
           <div
             key={index}
-            className="w-16 h-16 bg-white/10 rounded-full flex items-center justify-center"
+            className="w-16 h-15  rounded-full flex items-center justify-center"
             aria-label={`Technology Partner ${index + 1}`}
           >
             <img
               src={`/assets/${icon}`} // Correct path to the image
               alt={`Technology Partner ${index + 1}`}
-              className="w-14 h-14 rounded-full"
+              className="w-16 h-15 rounded-full"
             />
           </div>
         ))}

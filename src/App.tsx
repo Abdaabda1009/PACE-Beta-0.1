@@ -8,6 +8,8 @@ import { supabase } from "@/integrations/supabase/client";
 import { DashboardLayout } from "./components/dashboard/DashboardLayout";
 import { Landing } from "./pages/Landing";
 import Login from "./pages/Login";
+import { Blog } from "./components/landingpage/pages/BLog";
+import { Changelog } from "@/components/landingpage/pages/Changelog";
 import { MainDashboard } from "./components/dashboard/MainDashboard";
 import { BudgetPlanner } from "./pages/budgetplanner";
 import { AnalysisGoals } from "./pages/AnalysisGoals";
@@ -19,10 +21,6 @@ import { Settings } from "./pages/Settings";
 import { Support } from "./pages/Support";
 import { ROUTES } from "./lib/constants";
 
-
-import AboutUs from "@/components/landingpage/pages/AboutUs";
-import Features from "@/components/landingpage/pages/Features";
-import Blog from "@/components/landingpage/pages/BLog";
 
 
 
@@ -70,9 +68,8 @@ const App = () => (
         <Routes>
           {/* Default route to Landing */}
           <Route path="/" element={<LandingWrapper />} />
-          <Route path="AboutUs" element={<AboutUs />} />
-          <Route path="features" element={<Features />} />
-          <Route path="blog" element={<Blog />} />
+          <Route path="Blog" element={<Blog />} />
+          <Route path="Changelog" element={<Changelog /> } />
 
           {/* Login page */}
           <Route path={ROUTES.LOGIN} element={<Login />} />

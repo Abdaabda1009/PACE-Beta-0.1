@@ -4,7 +4,7 @@ import { Play } from "lucide-react";
 export const DashboardPic = () => {
   return (
     <div className="relative flex justify-center items-center w-full">
-      <Card className="aspect-[20/10] bg-[#0A0118]/80 backdrop-blur-sm rounded-lg overflow-hidden border-purple-500/20 flex justify-center items-center">
+      <Card className="aspect-[16/10] bg-[#0A0118]/80 backdrop-blur-sm rounded-lg overflow-hidden border-blue-500/20 flex justify-center items-center">
         {/* Placeholder for Picture */}
         <div className="w-full max-w-[1200px] h-full max-h-[1200px] bg-gray-700 rounded-lg flex items-center justify-center">
           <img

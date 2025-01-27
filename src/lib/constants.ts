@@ -1,3 +1,5 @@
+import { Blog } from "@/components/landingpage/pages/BLog";
+
 export const APP_NAME = "PACE Inv";
 export const APP_VERSION = "Beta 1.0";
 
@@ -11,8 +13,8 @@ export const ROUTES = {
   HOME: "/landing",
   LOGIN: "/login",
   DASHBOARD: "/dashboard",
-  ABOUT: "/about",
-  CONTACT: "/contact",
+  BLOG: "/blog",
+  CHANGELOG: "/changelog",
   BUDGET_PLANNER: "/dashboard/budget-planner",
   ANALYSIS_GOALS: "/dashboard/analysis-goals",
   DEBT_MANAGEMENT: "/dashboard/debt-management",

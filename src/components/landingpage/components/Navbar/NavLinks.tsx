@@ -1,24 +1,33 @@
 import { Button } from "@/components/ui/button";
 import { useNavigate } from "react-router-dom";
-import { ChevronDown } from "lucide-react";
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu";
+import { ROUTES } from "@/lib/constants";
 
 const navLinkStyle = "hover:bg-white/5 transition-colors duration-200";
 
 export const NavLinks = () => {
   const navigate = useNavigate();
 
+  const scrollToFeatures = () => {
+    const featuresSection = document.querySelector("#features-grid");
+    if (featuresSection) {
+      featuresSection.scrollIntoView({ behavior: "smooth" });
+    }
+  };
+
+  const scrollToPricing = () => {
+    const pricingSection = document.querySelector("#pricing-section");
+    if (pricingSection) {
+      pricingSection.scrollIntoView({ behavior: "smooth" });
+    }
+  };
+  
+
   return (
     <>
       <Button
         variant="ghost"
         className={`text-white ${navLinkStyle} w-full md:w-auto justify-start md:justify-center text-base md:text-sm font-normal`}
-        onClick={() => navigate("/about")}
+        onClick={scrollToFeatures}
       >
         Product
       </Button>
@@ -26,7 +35,7 @@ export const NavLinks = () => {
       <Button
         variant="ghost"
         className={`text-white ${navLinkStyle} w-full md:w-auto justify-start md:justify-center text-base md:text-sm font-normal`}
-        onClick={() => navigate("/pricing")}
+        onClick={scrollToPricing}
       >
         Pricing
       </Button>
@@ -42,7 +51,7 @@ export const NavLinks = () => {
       <Button
         variant="ghost"
         className={`text-white ${navLinkStyle} w-full md:w-auto justify-start md:justify-center text-base md:text-sm font-normal`}
-        onClick={() => navigate("/blog")}
+        onClick={() => navigate(ROUTES.BLOG)}
       >
         Blog
       </Button>
@@ -50,7 +59,7 @@ export const NavLinks = () => {
       <Button
         variant="ghost"
         className={`text-white ${navLinkStyle} w-full md:w-auto justify-start md:justify-center text-base md:text-sm font-normal`}
-        onClick={() => navigate("/changelog")}
+        onClick={() => navigate(ROUTES.CHANGELOG)}
       >
         Changelog
       </Button>

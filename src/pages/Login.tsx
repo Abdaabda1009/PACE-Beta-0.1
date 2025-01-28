@@ -30,8 +30,9 @@ const Login = () => {
         hoverFillColor="rgba(255,255,255,0.05)"
       />
       <div className="w-full max-w-md bg-[#1A1F2C] rounded-lg shadow-xl p-8 relative z-10">
-        <h2 className="text-2xl font-bold text-center mb-6 text-white">
-          Welcome to PACE
+        <img src="assets/logo.png" alt="Logo" className="w-42 h-20 ml-24" />
+        <h2 className="ml-24 max-w-md mt-3 bg-gradient-to-r from-blue-400 to-purple-200 to-green-200 bg-clip-text text-transparent ">
+          Welcome to Pace innovation
         </h2>
         <Auth
           supabaseClient={supabase}

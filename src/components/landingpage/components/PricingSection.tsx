@@ -65,14 +65,13 @@ export const PricingSection = () => {
         </div>
         {/* CTA Button */}
         <Button
-          className="w-[200px] mt-8 bg-gradient-to-r from-[#ADADAD] to-[#1A7DAF] hover:bg-purple-400 text-white px-8 py-6 h-auto text-lg rounded-full"
-          onClick={() => navigate("/login?view=sign_up")}
+          className="w-[300px] mt-8 bg-gradient-to-r from-[#ADADAD] to-[#1A7DAF] hover:bg-clip-text hover:text-transparent transition-colors duration-200 rounded-full"
         >
-          Start your free-trial
+          Start your Free-Trial
         </Button>
       </div>
       {/* Background Gradient */}
-      <div className="absolute bottom-0 left-1/2 -translate-x-1/2 translate-y-1/2 w-[800px] h-[800px] opacity-40 pointer-events-none">
+      <div className="absolute bottom-32 left-1/2 -translate-x-1/2 translate-y-1/2 w-[800px] h-[800px] opacity-40 pointer-events-none">
         <div className="absolute inset-0 rounded-full bg-gradient-to-b from-blue-500/30 to-purple-600/30 blur-3xl" />
       </div>
     </div>

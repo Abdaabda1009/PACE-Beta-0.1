@@ -25,8 +25,9 @@ export const Footer = () => {
   ];
 
   return (
-    <footer className="bg-dashboard-background mt-16 rounded-xl sm:mt-24 py-12 sm:py-16 border-t border-white/10">
-      <div className="container mx-auto px-4">
+    <footer className="border-1 border-blue-200 mt-8 sm:mt-16 lg:mt-24 py-8 sm:py-12 lg:py-16 border-t border-white/10 rounded-lg">
+      <div
+        className="container mx-auto px-4 sm:px-6 lg:px-8">
         <NewsletterSection />
 
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8 md:gap-12">

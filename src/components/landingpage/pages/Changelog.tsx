@@ -55,7 +55,10 @@ export const Changelog = () => {
               onChange={(e) => setEmail(e.target.value)}
               className="bg-white/5 border-white/10 text-white placeholder:text-white/40"
             />
-            <Button type="submit" className="bg-indigo-600 hover:bg-indigo-700">
+            <Button
+              type="submit"
+              className="h-full w-[200px] bg-gradient-to-r from-[#ADADAD] to-[#1A7DAF] hover:bg-clip-text hover:text-transparent transition-colors duration-200"
+            >
               Subscribe
             </Button>
           </form>

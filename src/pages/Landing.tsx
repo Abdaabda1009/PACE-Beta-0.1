@@ -7,6 +7,7 @@ import "@/components/landingpage/assets/SpotlightCard.css";
 import { ActionButtonCard } from "@/components/landingpage/components/Action-button/ActionButtonCard";
 import { Footer } from "@/components/landingpage/components/footer/Footer";
 import { PricingSection } from "@/components/landingpage/components/PricingSection";
+import { AboutSection } from "@/components/landingpage/components/AboutSection";
 
 
 export const Landing = () => {
@@ -20,6 +21,7 @@ export const Landing = () => {
       <PoweredBy />
       </div>
       <PricingSection />
+      <AboutSection />
       <ActionButtonCard />
       <Footer />
     </div>

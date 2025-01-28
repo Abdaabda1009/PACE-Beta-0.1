@@ -2,13 +2,16 @@ import { Mail, Phone } from "lucide-react";
 export const ContactSection = () => {
   return (
     <div className="mt-4 sm:mt-0">
-      <h4 className="text-white font-semibold text-lg mb-4 sm:mb-6">Contact</h4>
+      <h4 className="text-white font-semibold text-base sm:text-lg lg:text-xl mb-4 sm:mb-6">
+        Contact
+      </h4>
       <ul className="space-y-3 sm:space-y-4">
-        <li className="flex items-center gap-2 text-dashboard-muted text-sm sm:text-base">
+        <li
+          className="flex items-center gap-2 sm:gap-3 text-dashboard-muted text-sm sm:text-base">
           <Mail className="w-4 sm:w-5 h-4 sm:h-5" />
           <span>abdallah@openainsights.com</span>
         </li>
-        <li className="flex items-center gap-2 text-dashboard-muted text-sm sm:text-base">
+        <li className="flex items-center gap-2 sm:gap-3 text-dashboard-muted text-sm sm:text-base">
           <Phone className="w-4 sm:w-5 h-4 sm:h-5" />
           <span>+46 79 339 94 53</span>
           <span>+46 72 581 81 47</span>

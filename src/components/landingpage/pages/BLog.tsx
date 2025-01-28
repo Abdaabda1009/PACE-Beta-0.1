@@ -2,7 +2,7 @@ import { LandingNavbar } from "@/components/landingpage/components/Navbar/Landin
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent } from "@/components/ui/card";
-import { useState } from "react";
+import { useState, useRef, useEffect } from "react";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { X } from "lucide-react";
 
@@ -41,7 +41,8 @@ export const Blog = () => {
     null
   );
   const [selectedTag, setSelectedTag] = useState("All Tags");
-  const [timeSpan, setTimeSpan] = useState("all"); // 'all', 'week', 'month', 'year'
+  const [timeSpan, setTimeSpan] = useState("all");
+  const overlayRef = useRef<HTMLDivElement>(null);
 
   const handleArticleClick = (articleId: number) => {
     setExpandedArticleId(articleId);
@@ -49,6 +50,12 @@ export const Blog = () => {
 
   const handleCloseArticle = () => {
     setExpandedArticleId(null);
+  };
+
+  const handleOverlayClick = (e: React.MouseEvent<HTMLDivElement>) => {
+    if (e.target === overlayRef.current) {
+      handleCloseArticle();
+    }
   };
 
   const handleTagClick = (tag: string) => {
@@ -60,10 +67,27 @@ export const Blog = () => {
     return article.category === selectedTag;
   });
 
+  // Add ESC key handler
+  useEffect(() => {
+    const handleEscKey = (e: KeyboardEvent) => {
+      if (e.key === "Escape") {
+        handleCloseArticle();
+      }
+    };
+
+    if (expandedArticleId !== null) {
+      document.addEventListener("keydown", handleEscKey);
+    }
+
+    return () => {
+      document.removeEventListener("keydown", handleEscKey);
+    };
+  }, [expandedArticleId]);
+
   return (
     <div className="min-h-screen ">
       <LandingNavbar />
-      <div className="container mx-auto px-12 pt-32 pb-16">
+      <div className="container mx-auto px-4 pt-32 pb-16">
         {/* Tags Section */}
         <div className="flex flex-wrap gap-2 mb-8">
           {tags.map((tag, index) => (
@@ -121,7 +145,11 @@ export const Blog = () => {
 
               {/* Expanded Article Overlay */}
               {expandedArticleId === article.id && (
-                <div className="fixed inset-0 z-50 flex items-center justify-center px-4 bg-black/50">
+                <div
+                  ref={overlayRef}
+                  className="fixed inset-0 z-50 flex items-center justify-center px-4 bg-black/50 backdrop-blur-sm"
+                  onClick={handleOverlayClick}
+                >
                   <Card className="bg-dashboard-card border-none w-full max-w-4xl max-h-[90vh] overflow-hidden animate-in fade-in zoom-in duration-300">
                     <CardContent className="p-0">
                       <div className="relative">
@@ -156,7 +184,7 @@ export const Blog = () => {
                         <h2 className="text-white text-2xl font-semibold mb-4">
                           {article.title}
                         </h2>
-                        <ScrollArea className="h-[400px] pr-6">
+                        <ScrollArea className="h-[400px] pr-6 scrollbar-hide">
                           <p className="text-gray-300 leading-relaxed">
                             {article.content}
                           </p>
@@ -171,9 +199,6 @@ export const Blog = () => {
         </div>
 
         {/* Load More Button */}
-        <div className="absolute bottom-0 left-1/2 -translate-x-1/2 translate-y-1/2 w-[800px] h-[800px] opacity-20 pointer-events-none">
-          <div className="absolute inset-0 rounded-full bg-gradient-to-b from-blue-500/30 to-purple-600/30 blur-3xl" />
-        </div>
         <div className="flex justify-center mt-12">
           <Button
             variant="secondary"

@@ -12,7 +12,7 @@ export const NewsletterSection = () => {
             placeholder="Enter your email"
             className="w-full md:w-80 px-4 py-2 rounded-lg bg-white/20 text-white placeholder:text-white/70 border border-white/20 focus:outline-none focus:border-white/40"
           />
-          <button className="w-full sm:w-auto px-6 py-2 bg-white text-blue-400 rounded-lg font-medium hover:bg-white/90 transition-colors">
+          <button className="w-full sm:w-auto px-6 py-2 border border-black-500/30 text-white-400 rounded-lg font-medium hover:bg-white/90 text-black transition-colors">
             Subscribe
           </button>
         </div>

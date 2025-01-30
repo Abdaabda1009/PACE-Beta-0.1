@@ -8,7 +8,7 @@ export const AuthButtons = () => {
     <div className="flex items-center gap-2 md:gap-3">
       <Button
         variant="ghost"
-        className="text-white/90 h-full border border-blue-500/30 hover:text-white bg-black/10 text-sm px-3 sm:px-4"
+        className="text-white-400 h-full border border-blue-500/30 hover:text-black bg-black/20 text-sm px-3 sm:px-4"
         onClick={() => navigate("/login")}
       >
         Sign In

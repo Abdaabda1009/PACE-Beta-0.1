@@ -71,7 +71,7 @@ export const PricingSection = () => {
         </Button>
       </div>
       {/* Background Gradient */}
-      <div className="absolute bottom-32 left-1/2 -translate-x-1/2 translate-y-1/2 w-[800px] h-[800px] opacity-40 pointer-events-none">
+      <div className="absolute bottom-32 left-1/2 -translate-x-1/2 translate-y-1/2 w-[300px] h-[500px] opacity-40 pointer-events-none">
         <div className="absolute inset-0 rounded-full bg-gradient-to-b from-blue-500/30 to-purple-600/30 blur-3xl" />
       </div>
     </div>

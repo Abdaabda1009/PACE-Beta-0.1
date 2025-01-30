@@ -6,14 +6,13 @@ const navLinkStyle = "hover:bg-white/5 transition-colors duration-200";
 
 export const NavLinks = () => {
   const navigate = useNavigate();
-  const location = useLocation();
   
   const handleNavigation = (action: () => void) => {
     // If we're not on the home page, navigate home first
     if (location.pathname !== ROUTES.HOME) {
       navigate(ROUTES.HOME);
       // Wait for the navigation to complete before scrolling
-      setTimeout(action, 100);
+      setTimeout(action, 10);
     } else {
       action();
     }

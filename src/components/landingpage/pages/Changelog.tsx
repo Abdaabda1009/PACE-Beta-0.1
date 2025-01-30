@@ -13,7 +13,7 @@ const updates = [
       "Launching PACE Finance with core features to help you manage your financial life effectively.",
     features: [
       "Finalized all core features, including subscription tracker, budget planner, and debt management, ensuring MVP functionality is stable and user-friendly.",
-      "Enhanced navigation menus for better accessibility and improved mobile responsiveness.Added right-aligned menu for a modern layout and streamlined user interactions.",
+      "Enhanced navigation menus for better accessibility and improved mobile responsiveness. Added right-aligned menu for a modern layout and streamlined user interactions.",
       "Resolved issues with dropdown positioning, menu collapsibility, and authentication button alignment. Fixed minor visual inconsistencies in the appearance settings cards.",
       "Minimized asset load times and optimized components for smoother performance on low-end devices. Reduced memory usage in key app modules.",
       "Incorporated feedback from alpha testers, refining error messages, and improving layout flexibility.",
@@ -41,7 +41,7 @@ export const Changelog = () => {
         <div className="max-w-3xl mx-auto">
           <h1 className="text-5xl font-bold mb-4">Changelog</h1>
           <p className="text-lg text-white/60 mb-8">
-            New updates and improvements to PACE Finance.
+            New updates and improvements to PACE innovation.
           </p>
 
           <form

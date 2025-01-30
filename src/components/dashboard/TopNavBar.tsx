@@ -5,16 +5,7 @@ import { useState } from "react";
 import { supabase } from "@/integrations/supabase/client";
 import { useNavigate, useLocation } from "react-router-dom";
 import { CurrencySelector } from "@/components/CurrencySelector";
-import {
-  CommandDialog,
-  CommandEmpty,
-  CommandGroup,
-  CommandInput,
-  CommandItem,
-  CommandList,
-} from "@/components/ui/command";
-import { createDefaultWidgets } from "@/components/dashboard/confiq/defaultWidgets";
-import { useSubscriptions } from "@/hooks/useSubscriptions";
+
 
 export const TopNavBar = () => {
   const [bellCount, setBellCount] = useState(3);
@@ -39,19 +30,18 @@ export const TopNavBar = () => {
   };
 
   return (
-    <div className="flex items-center justify-between w-full bg-dashboard-background p-4 border-b border-dashboard-card">
-      <div className="flex flex-col">
-      </div>
+    <div className="flex items-center justify-between w-full  bg-rgb(59 130 246 / 0.5 p-4 border border-blue-500/30">
+      <div className="flex flex-col"></div>
       <div className="flex items-center gap-2">
         <CurrencySelector />
         <div className="relative flex items-center">
           <Input
             type="text"
             placeholder="Search"
-            className="w-[150px] bg-dashboard-card text-white border-none pl-10"
+            className="w-full mx-auto bg-dashboard-card text-white border-none pl-10"
           />
           <Search className="absolute left-3 h-4 w-4 text-dashboard-muted" />
-          <Button 
+          <Button
             variant="secondary"
             size="sm"
             className="absolute right-1 bg-dashboard-card hover:bg-dashboard-card/80"
@@ -59,7 +49,7 @@ export const TopNavBar = () => {
             Submit
           </Button>
         </div>
-        
+
         <div className="flex items-center gap-4">
           <Button
             variant="ghost"
@@ -74,7 +64,7 @@ export const TopNavBar = () => {
               </span>
             )}
           </Button>
-          
+
           <Button
             variant="ghost"
             size="icon"

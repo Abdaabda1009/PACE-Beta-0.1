@@ -180,8 +180,8 @@ export const DebtOverview = () => {
           </DropdownMenuContent>
         </DropdownMenu>
       </div>
-      <div className="grid grid-cols-2 gap-4 mb-6">
-        <div className="bg-[#1A1F2C] p-4 rounded-lg">
+      <div className="grid grid-cols-2 gap-4 mb-6 ">
+        <div className="p-4 rounded-lg bg-[#050524] border border-blue-500/30">
           <div className="flex items-center gap-2 mb-2">
             <DollarSign className="w-5 h-5 text-primary" />
             <span className="text-sm text-gray-400">Total Debt</span>
@@ -191,18 +191,16 @@ export const DebtOverview = () => {
           </p>
         </div>
 
-        <div className="bg-[#1A1F2C] p-4 rounded-lg">
-          <div className="flex items-center gap-2 mb-2">
+        <div className="p-4 rounded-lg border bg-[#050524] border-blue-500/30">
+          <div className="flex items-center gap-2 mb-2 ">
             <Bell className="w-5 h-5 text-yellow-500" />
             <span className="text-sm text-gray-400">Next Payment Due</span>
           </div>
-          <p className="text-2x1 font-bold text-white">
-            No payments due
-          </p>
+          <p className="text-2x1 font-bold text-white">No payments due</p>
         </div>
       </div>
       {/* Progress Section */}
-      <div className="bg-[#1A1F2C] p-4 rounded-lg mb-6">
+      <div className=" p-4 rounded-lg mb-6 bg-[#050524] border border-blue-500/30">
         <div className="flex justify-between items-center mb-2">
           <span className="text-sm text-gray-400">Payment Progress</span>
           <span className="text-sm text-white">

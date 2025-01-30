@@ -13,7 +13,7 @@ export const HeroSection = () => {
         </div>
         <HeroActions />
       </div>
-      <div className="absolute bottom-0 left-1/2 -translate-x-1/2 translate-y-1/2 w-[800px] h-[800px] opacity-30 pointer-events-none">
+      <div className="absolute bottom-0 left-1/2 -translate-x-1/2 translate-y-1/2 w-[300px] h-[800px] opacity-30 pointer-events-none">
         <div className="absolute inset-0 rounded-full bg-gradient-to-b from-blue-500/30 to-purple-600/30 blur-3xl" />
       </div>
     </main>

@@ -67,8 +67,8 @@ export function DashboardCustomizeButton({
   return (
     <Dialog open={open} onOpenChange={setOpen}>
       <DialogTrigger asChild>
-        <Button variant="outline" size="sm">
-          <Settings className="w-4 h-4 mr-2" />
+        <Button className="bg-[#1A1F2C] hover:bg-blue-600/10 hover:text-white">
+          <Settings className="w-4 h-4 mr-2 " />
           Customize
         </Button>
       </DialogTrigger>

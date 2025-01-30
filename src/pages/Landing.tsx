@@ -12,17 +12,25 @@ import { AboutSection } from "@/components/landingpage/components/AboutSection";
 
 export const Landing = () => {
   return (
-    <div className="container w-[full] px-5 sm:px-6 lg:px-12 py-14">
+    <div className="w-full">
       <LandingNavbar />
-      <HeroSection />
-      <DashboardPic />
-      <FeaturesGrid />
-      <div className="mb-16">
-      <PoweredBy />
-      </div>
-      <PricingSection />
-      <AboutSection />
-      <ActionButtonCard />
+      <main className="container mx-auto px-5 sm:px-6 lg:px-12 py-10 sm:py-14">
+        <HeroSection />
+        <DashboardPic />
+        <FeaturesGrid />
+
+        <div className="mb-16 sm:mb-20 lg:mb-24">
+          <PoweredBy />
+        </div>
+
+        <PricingSection />
+        <AboutSection />
+
+        <div className="flex justify-center mt-10 sm:mt-16">
+          <ActionButtonCard />
+        </div>
+      </main>
+
       <Footer />
     </div>
   );

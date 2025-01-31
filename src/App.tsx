@@ -8,14 +8,14 @@ import { supabase } from "@/integrations/supabase/client";
 import { DashboardLayout } from "./components/dashboard/DashboardLayout";
 import { Landing } from "./pages/Landing";
 import Login from "./pages/Login";
-import { Blog } from "./components/landingpage/pages/BLog";
+import { Blog } from "@/components/landingpage/pages/blog";
 import { Changelog } from "@/components/landingpage/pages/Changelog";
 import { MainDashboard } from "./components/dashboard/MainDashboard";
 import { BudgetPlanner } from "./pages/budgetplanner";
-import { AnalysisGoals } from "./pages/AnalysisGoals";
+import { Goals } from "./pages/Goals";
 import { DebtManagement } from "./pages/DebtManagement";
 import { Subscriptions } from "./pages/Subscriptions";
-import { AssetsManagement } from "./pages/AssetsManagement";
+import { FinancialAnalysis } from "@/pages/FinancialAnalysis";
 import { Transactions } from "./pages/Transactions";
 import { Settings } from "./pages/Settings";
 import { Support } from "./pages/Support";
@@ -69,7 +69,7 @@ const App = () => (
           {/* Default route to Landing */}
           <Route path="/" element={<LandingWrapper />} />
           <Route path="Blog" element={<Blog />} />
-          <Route path="Changelog" element={<Changelog /> } />
+          <Route path="Changelog" element={<Changelog />} />
 
           {/* Login page */}
           <Route path={ROUTES.LOGIN} element={<Login />} />
@@ -85,10 +85,10 @@ const App = () => (
           >
             <Route index element={<MainDashboard />} />
             <Route path="budget-planner" element={<BudgetPlanner />} />
-            <Route path="analysis-goals" element={<AnalysisGoals />} />
+            <Route path="goals" element={<Goals />} />
             <Route path="debt-management" element={<DebtManagement />} />
             <Route path="subscriptions" element={<Subscriptions />} />
-            <Route path="assets-management" element={<AssetsManagement />} />
+            <Route path="Financial-Analysis" element={<FinancialAnalysis />} />
             <Route path="transactions" element={<Transactions />} />
             <Route path="settings" element={<Settings />} />
             <Route path="support" element={<Support />} />

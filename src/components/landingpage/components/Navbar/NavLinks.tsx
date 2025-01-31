@@ -12,7 +12,7 @@ export const NavLinks = () => {
     if (location.pathname !== ROUTES.HOME) {
       navigate(ROUTES.HOME);
       // Wait for the navigation to complete before scrolling
-      setTimeout(action, 10);
+      setTimeout(action, 1000);
     } else {
       action();
     }

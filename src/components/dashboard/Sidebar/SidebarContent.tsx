@@ -77,12 +77,33 @@ export const SidebarContent = () => {
           </div>
         </div>
         <div className="mb-4 ">
-          <span className="text-xs font-medium text-gray-400 ">
+          <span className="text-xs font-medium text-gray-400">
             Financial Tools
           </span>
           <div className="mt-2 space-y-1">
             {menuItems
               .filter((item) => item.category === "Financial Tools")
+              .map((item, index) => {
+                const isActive = item.path === location.pathname;
+                return (
+                  <MenuItem
+                    key={index}
+                    icon={item.icon}
+                    label={item.label}
+                    path={item.path}
+                    isActive={isActive}
+                  />
+                );
+              })}
+          </div>
+        </div>
+        <div className="mb-4 ">
+          <span className="text-xs font-medium text-gray-400 ">
+            Report & Analysis (Not available yet )
+          </span>
+          <div className="mt-2 space-y-1">
+            {menuItems
+              .filter((item) => item.category === "Report & Analysis")
               .map((item, index) => {
                 const isActive = item.path === location.pathname;
                 return (

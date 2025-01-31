@@ -1,5 +1,5 @@
 import { Button } from "@/components/ui/button";
-import { Plus, Edit, Eye, MoreVertical, Trash2 } from "lucide-react";
+import { Plus, Edit, Eye, MoreVertical, Trash2, Target } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import {
   DropdownMenu,
@@ -20,7 +20,7 @@ export const GoalHeader = ({ onEditClick, onAddClick, onDeleteClick, hasGoals }:
 
   return (
     <div className="flex items-center justify-between mb-6">
-      <h2 className="text-xl font-semibold text-white">Goals</h2>
+      <h2 className="text-xl font-semibold text-white">Goals Overview</h2>
       <DropdownMenu>
         <DropdownMenuTrigger asChild>
           <Button

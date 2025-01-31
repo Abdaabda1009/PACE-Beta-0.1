@@ -1,4 +1,4 @@
-import { Blog } from "@/components/landingpage/pages/BLog";
+
 
 export const APP_NAME = "PACE Inv";
 export const APP_VERSION = "Beta 1.0";
@@ -16,12 +16,11 @@ export const ROUTES = {
   BLOG: "/blog",
   CHANGELOG: "/changelog",
   BUDGET_PLANNER: "/dashboard/budget-planner",
-  ANALYSIS_GOALS: "/dashboard/analysis-goals",
+  GOALS: "/dashboard/goals",
   DEBT_MANAGEMENT: "/dashboard/debt-management",
   SUBSCRIPTIONS: "/dashboard/subscriptions",
-  ASSETS_MANAGEMENT: "/dashboard/assets-management",
+  FINANCIAL_ANALYSIS: "/dashboard/FinancialAnalysis",
   TRANSACTIONS: "/dashboard/transactions",
-  PROFILE: "/dashboard/profile",
   SETTINGS: "/dashboard/settings",
   SUPPORT: "/dashboard/support",
 } as const;

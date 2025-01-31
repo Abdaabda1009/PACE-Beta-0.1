@@ -12,7 +12,6 @@ export const Subscriptions = () => {
       <h1 className="text-3xl font-semibold text-white">Subscriptions</h1>
       <SubscriptionOverview
         subscriptions={subscriptions}
-        isLoading={isLoading}
         onEditSubscription={setEditingSubscription}
         onSubscriptionUpdated={refetchSubscriptions}
       />

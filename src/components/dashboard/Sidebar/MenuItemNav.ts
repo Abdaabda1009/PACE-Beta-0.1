@@ -13,6 +13,7 @@ import {
   ChevronDown,
   ChevronRight,
   Wallet,
+  TargetIcon,
 } from "lucide-react";
 import { ROUTES } from "@/lib/constants";
 
@@ -21,7 +22,7 @@ interface MenuItem {
   label: string;
   path?: string;
   children?: MenuItem[];
-  category?: "Dashboard" | "Help" | "Financial Tools" | "System" ;
+  category?: "Dashboard" | "Help" | "Financial Tools" | "System" | "Report & Analysis";
 }
 
 export const menuItems: MenuItem[] = [
@@ -40,9 +41,9 @@ export const menuItems: MenuItem[] = [
   },
 
   {
-    icon: BarChart2,
-    label: "Analysis & Goals",
-    path: ROUTES.ANALYSIS_GOALS,
+    icon: TargetIcon,
+    label: "Goals",
+    path: ROUTES.GOALS,
     category: "Financial Tools",
   },
 
@@ -61,10 +62,10 @@ export const menuItems: MenuItem[] = [
   },
 
   {
-    icon: DollarSign,
-    label: "Assets Management",
-    path: ROUTES.ASSETS_MANAGEMENT,
-    category: "Financial Tools",
+    icon: BarChart2,
+    label: "Financial Analysis",
+    path: ROUTES.FINANCIAL_ANALYSIS,
+    category: "Report & Analysis",
   },
 
   {

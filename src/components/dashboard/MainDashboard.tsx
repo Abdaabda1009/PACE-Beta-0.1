@@ -14,7 +14,7 @@ export const MainDashboard = () => {
   const [timeRange, setTimeRange] = useState<"1Y" | "6M" | "3M" | "1M">("1Y");
   const { subscriptions, isLoading, refetchSubscriptions } = useSubscriptions();
   const [editingSubscription, setEditingSubscription] = useState<any>(null);
-  const isMobile = useMediaQuery("(max-width: 768px)");
+  const isMobile = useMediaQuery("(max-width: 208px)");
 
   const defaultWidgets = createDefaultWidgets(
     timeRange,

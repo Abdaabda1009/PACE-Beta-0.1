@@ -81,7 +81,7 @@ const Blog = () => {
   }, [expandedArticleId, handleCloseArticle]);
 
   return (
-    <div className="min-h-screen bg-black">
+    <div className="min-h-screen ">
       <LandingNavbar />
       <div className="container mx-auto px-4 pt-32 pb-16">
         {/* Tags Section */}

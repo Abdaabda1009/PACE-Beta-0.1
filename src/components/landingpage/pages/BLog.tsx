@@ -2,10 +2,9 @@ import { LandingNavbar } from "@/components/landingpage/components/Navbar/Landin
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent } from "@/components/ui/card";
-import { useState, useRef, useEffect } from "react";
+import { useState, useRef, useEffect, useCallback } from "react";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { X } from "lucide-react";
-
 
 const articles = [
   {
@@ -15,8 +14,8 @@ const articles = [
     title: "Smart Budgeting Strategies for Long-term Financial Success",
     image: "/BlogAssets/Smart-Budgeting-Strategies.png",
     content:
-      "Smart budgeting is essential for achieving long-term financial success. This comprehensive guide explores effective strategies for managing your money wisely. Learn how to create a sustainable budget that helps you meet your financial goals while maintaining a comfortable lifestyle. We'll cover important topics such as expense tracking, saving techniques, and investment planning. Understanding these fundamental principles will help you build a strong financial foundation for your future.",
-    },
+      "Smart budgeting is essential for achieving long-term financial success. This guide explores strategies to manage money wisely, covering topics such as expense tracking, saving techniques, and investment planning.",
+  },
   {
     id: 2,
     category: "Articles",
@@ -24,7 +23,7 @@ const articles = [
     title: "Investment Basics: Building a Strong Financial Portfolio",
     image: "/BlogAssets/Investment-Basics.png",
     content:
-      "Building a strong financial portfolio requires understanding key investment principles and market dynamics. This article provides a detailed overview of investment basics, helping you make informed decisions about your financial future. Learn about different investment vehicles, risk management, and portfolio diversification strategies. Whether you're a beginner or experienced investor, these insights will help you optimize your investment approach",
+      "Building a strong portfolio requires understanding key investment principles. This article provides insights into different investment vehicles, risk management, and portfolio diversification strategies.",
   },
 ];
 
@@ -36,56 +35,53 @@ const tags = [
   "Articles",
 ];
 
-export const Blog = () => {
+const Blog = () => {
   const [expandedArticleId, setExpandedArticleId] = useState<number | null>(
     null
   );
   const [selectedTag, setSelectedTag] = useState("All Tags");
-  const [timeSpan, setTimeSpan] = useState("all");
   const overlayRef = useRef<HTMLDivElement>(null);
 
-  const handleArticleClick = (articleId: number) => {
+  // Handlers optimized with useCallback
+  const handleArticleClick = useCallback((articleId: number) => {
     setExpandedArticleId(articleId);
-  };
+  }, []);
 
-  const handleCloseArticle = () => {
+  const handleCloseArticle = useCallback(() => {
     setExpandedArticleId(null);
-  };
+  }, []);
 
-  const handleOverlayClick = (e: React.MouseEvent<HTMLDivElement>) => {
-    if (e.target === overlayRef.current) {
-      handleCloseArticle();
-    }
-  };
+  const handleOverlayClick = useCallback(
+    (e: React.MouseEvent<HTMLDivElement>) => {
+      if (e.target === overlayRef.current) handleCloseArticle();
+    },
+    [handleCloseArticle]
+  );
 
-  const handleTagClick = (tag: string) => {
+  const handleTagClick = useCallback((tag: string) => {
     setSelectedTag(tag);
-  };
+  }, []);
 
-  const filteredArticles = articles.filter((article) => {
-    if (selectedTag === "All Tags") return true;
-    return article.category === selectedTag;
-  });
+  const filteredArticles = articles.filter(
+    (article) => selectedTag === "All Tags" || article.category === selectedTag
+  );
 
   // Add ESC key handler
   useEffect(() => {
     const handleEscKey = (e: KeyboardEvent) => {
-      if (e.key === "Escape") {
-        handleCloseArticle();
-      }
+      if (e.key === "Escape") handleCloseArticle();
     };
 
     if (expandedArticleId !== null) {
       document.addEventListener("keydown", handleEscKey);
     }
-
     return () => {
       document.removeEventListener("keydown", handleEscKey);
     };
-  }, [expandedArticleId]);
+  }, [expandedArticleId, handleCloseArticle]);
 
   return (
-    <div className="min-h-screen ">
+    <div className="min-h-screen bg-black">
       <LandingNavbar />
       <div className="container mx-auto px-4 pt-32 pb-16">
         {/* Tags Section */}
@@ -121,15 +117,13 @@ export const Blog = () => {
                     <img
                       src={article.image}
                       alt={article.title}
+                      loading="lazy"
                       className="w-full h-full object-cover"
                     />
                   </div>
                   <div className="p-6">
                     <div className="flex items-center gap-3 mb-3">
-                      <Badge
-                        variant="secondary"
-                        className="bg-blue-600 text-white"
-                      >
+                      <Badge className="bg-blue-600 text-white">
                         {article.category}
                       </Badge>
                       <span className="text-dashboard-muted text-sm">
@@ -156,6 +150,7 @@ export const Blog = () => {
                         <Button
                           variant="ghost"
                           size="icon"
+                          aria-label="Close article"
                           className="absolute right-2 top-2 z-10 bg-black/50 hover:bg-black/70 text-white"
                           onClick={handleCloseArticle}
                         >
@@ -165,16 +160,14 @@ export const Blog = () => {
                           <img
                             src={article.image}
                             alt={article.title}
+                            loading="lazy"
                             className="w-full h-full object-cover"
                           />
                         </div>
                       </div>
                       <div className="p-6">
                         <div className="flex items-center gap-3 mb-3">
-                          <Badge
-                            variant="secondary"
-                            className="bg-blue-600 text-white"
-                          >
+                          <Badge className="bg-blue-600 text-white">
                             {article.category}
                           </Badge>
                           <span className="text-dashboard-muted text-sm">
@@ -211,3 +204,5 @@ export const Blog = () => {
     </div>
   );
 };
+
+export default Blog;

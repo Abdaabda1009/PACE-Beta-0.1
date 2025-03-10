@@ -7,7 +7,7 @@ export const HeroDescription = () => {
       <div className="flex items-center gap-2 px-4 py-2 rounded-full bg-green-500/10 border border-blue-500/20">
         <Sparkles className="w-4 h-4 text-blue-400" />
         <span className="text-sm text-Purple-200 animate-focus-in">
-          Seamlessly manage your money with our intelligent platform
+          Effortlessly monitor all your subscriptions in one place
         </span>
       </div>
     </div>

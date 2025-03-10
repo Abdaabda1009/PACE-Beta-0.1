@@ -1,21 +1,27 @@
 import { Button } from "@/components/ui/button";
 import { useNavigate } from "react-router-dom";
+import { Star } from "lucide-react";
+import { ROUTES } from "@/lib/constants";
 
 export const AuthButtons = () => {
   const navigate = useNavigate();
 
+  const handleNavigation = () => {
+    navigate("SignUp")
+  }
+
   return (
-    <div className="flex items-center gap-2 md:gap-3">
+    <div className="flex justify-center gap-4">
       <Button
-        variant="ghost"
-        className="text-white-400 h-full border border-blue-500/30 hover:text-black bg-black/20 text-sm px-3 sm:px-4"
+        className=" h-full w-full bg-transparent border hover:bg-blue-200/20 transition-colors duration-200"
         onClick={() => navigate("/login")}
       >
-        Sign In
+        <Star className="w-4 h-4 bg-transparent hover:bg-blue-200/20" />
+        Star Us
       </Button>
       <Button
-        className=" h-full bg-gradient-to-r from-[#ADADAD] to-[#1A7DAF] hover:bg-clip-text hover:text-transparent transition-colors duration-200"
-        onClick={() => navigate("/login?view=sign_up")}
+        className=" h-full w-full bg-transparent border hover:bg-blue-200/20 transition-colors duration-200"
+        onClick={handleNavigation}
       >
         Get Started
       </Button>

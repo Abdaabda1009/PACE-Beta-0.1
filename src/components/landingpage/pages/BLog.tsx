@@ -16,7 +16,7 @@ const articles = [
     image: "/BlogAssets/Smart-Budgeting-Strategies.png",
     content:
       "Smart budgeting is essential for achieving long-term financial success. This comprehensive guide explores effective strategies for managing your money wisely. Learn how to create a sustainable budget that helps you meet your financial goals while maintaining a comfortable lifestyle. We'll cover important topics such as expense tracking, saving techniques, and investment planning. Understanding these fundamental principles will help you build a strong financial foundation for your future.",
-  },
+    },
   {
     id: 2,
     category: "Articles",

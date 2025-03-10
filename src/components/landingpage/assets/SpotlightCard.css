@@ -5,6 +5,7 @@
   background-color: #111;
   padding: 2rem;
   overflow: hidden;
+  transition: transform 0.3s ease, box-shdow 0.5s ease;
   --mouse-x: 100%;
   --mouse-y: 100%;
   --spotlight-color: rgba(255, 255, 255, 0.05);
@@ -13,17 +14,27 @@
 .card-spotlight::before {
   content: "";
   position: absolute;
+  pointer-events: none;
+  inset: '0';
+  opacity: 0;
+  transition: opacity 0.5s ease;
+  background: radial-gradient(
+    400px circle at var(--mouse-x) var(--mouse-y), 
+    var(--spotlight-color), 
+    transparent 50%);
   top: 0;
   left: 0;
   right: 0;
   bottom: 0;
-  background: radial-gradient(circle at var(--mouse-x) var(--mouse-y), var(--spotlight-color), transparent 80%);
-  opacity: 0;
-  transition: opacity 0.5s ease;
-  pointer-events: none;
+}
+
+.card-spotlight:hover {
+  box-shadow: 0 0 25px 5px rgba(5, 104, 137, 0.25);
+  transform: translateY(-12px);
 }
 
 .card-spotlight:hover::before,
 .card-spotlight:focus-within::before {
-  opacity: 20;
+  opacity: 25;
+
 }

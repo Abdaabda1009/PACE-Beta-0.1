@@ -33,7 +33,7 @@ export const MobileMenu = ({ isOpen, setIsOpen }: MobileMenuProps) => {
         </CollapsibleTrigger>
       </div>
       {isOpen && (
-        <CollapsibleContent className="absolute top-full left-0 w-full bg-[#0A0118]/95 backdrop-blur-sm border-t border-white/10">
+        <CollapsibleContent className="absolute top-full left-0 w-full bg-black backdrop-blur-sm border-t border-white/10">
           <div className="px-4 py-4 space-y-2">
             <NavLinks />
           </div>

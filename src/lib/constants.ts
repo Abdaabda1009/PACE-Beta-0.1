@@ -11,16 +11,7 @@ export const PLACEHOLDER_IMAGES = {
 
 export const ROUTES = {
   HOME: "/landing",
-  LOGIN: "/login",
-  DASHBOARD: "/dashboard",
   BLOG: "/blog",
   CHANGELOG: "/changelog",
-  BUDGET_PLANNER: "/dashboard/budget-planner",
-  GOALS: "/dashboard/goals",
-  DEBT_MANAGEMENT: "/dashboard/debt-management",
-  SUBSCRIPTIONS: "/dashboard/subscriptions",
-  FINANCIAL_ANALYSIS: "/dashboard/FinancialAnalysis",
-  TRANSACTIONS: "/dashboard/transactions",
-  SETTINGS: "/dashboard/settings",
-  SUPPORT: "/dashboard/support",
+  SIGNUP: "/SginUp"
 } as const;

@@ -43,7 +43,7 @@ export const NavLinks = () => {
     <>
       <Button
         variant="ghost"
-        className={`text-white ${navLinkStyle} w-full md:w-auto justify-start md:justify-center text-base md:text-sm font-normal`}
+        className={`text-white w-full md:w-auto justify-start md:justify-center text-base md:text-sm font-normal hover:bg-blue-200/20`}
         onClick={() => handleNavigation(scrollToFeatures)}
       >
         Product
@@ -51,7 +51,7 @@ export const NavLinks = () => {
 
       <Button
         variant="ghost"
-        className={`text-white ${navLinkStyle} w-full md:w-auto justify-start md:justify-center text-base md:text-sm font-normal`}
+        className={`text-white w-full md:w-auto justify-start md:justify-center text-base md:text-sm font-normal hover:bg-blue-200/20`}
         onClick={() => handleNavigation(scrollToPricing)}
       >
         Pricing
@@ -59,7 +59,7 @@ export const NavLinks = () => {
 
       <Button
         variant="ghost"
-        className={`text-white ${navLinkStyle} w-full md:w-auto justify-start md:justify-center text-base md:text-sm font-normal`}
+        className={`text-white w-full md:w-auto justify-start md:justify-center text-base md:text-sm font-normal hover:bg-blue-200/20`}
         onClick={() => handleNavigation(scrollToCompany)}
       >
         Company
@@ -67,7 +67,7 @@ export const NavLinks = () => {
 
       <Button
         variant="ghost"
-        className={`text-white ${navLinkStyle} w-full md:w-auto justify-start md:justify-center text-base md:text-sm font-normal`}
+        className={`text-white w-full md:w-auto justify-start md:justify-center text-base md:text-sm font-normal hover:bg-blue-200/20`}
         onClick={() => navigate(ROUTES.BLOG)}
       >
         Blog
@@ -75,7 +75,7 @@ export const NavLinks = () => {
 
       <Button
         variant="ghost"
-        className={`text-white ${navLinkStyle} w-full md:w-auto justify-start md:justify-center text-base md:text-sm font-normal`}
+        className={`text-white w-full md:w-auto justify-start md:justify-center text-base md:text-sm font-normal hover:bg-blue-200/20`}
         onClick={() => navigate(ROUTES.CHANGELOG)}
       >
         Changelog

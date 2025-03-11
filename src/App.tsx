@@ -6,8 +6,8 @@ import { BrowserRouter, Routes, Route, Navigate, Outlet } from "react-router-dom
 import { useEffect, useState } from "react";
 import { supabase } from "@/integrations/supabase/client";
 import { Landing } from "./Landing";
-import Blog from "@/components/landingpage/pages/blog";
-import { Changelog } from "@/components/landingpage/pages/Changelog";
+import Blog from "./components/landingpage/pages/blog";
+import { Changelog } from "./components/landingpage/pages/Changelog";
 import SignUp from "./components/landingpage/pages/SignUp";
 
 

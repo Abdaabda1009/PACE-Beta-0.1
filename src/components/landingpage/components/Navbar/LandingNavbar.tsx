@@ -21,7 +21,7 @@ export const LandingNavbar = () => {
             <img
               src="/assets/logoicon.png"
               alt="Logo"
-              className="w-7 h-7 md:w-12 md:h-12"
+              className="w-7 h-7 md:w-12 md:h-12 hover:scale-105"
             />
           </div>
 

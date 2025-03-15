@@ -1,5 +1,5 @@
 import { useMediaQuery } from "@/hooks/use-media-query";
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 
 export const PoweredBy = () => {
   const icons = [
@@ -13,52 +13,81 @@ export const PoweredBy = () => {
 
   const isMobile = useMediaQuery("(max-width: 768px)");
   const scrollRef = useRef<HTMLDivElement>(null);
+  const [displayIcons, setDisplayIcons] = useState([...icons]);
+  const animationFrameId = useRef<number>();
 
   useEffect(() => {
     if (isMobile && scrollRef.current) {
-      let speed = 0.5; // Adjust speed as needed
-      let scrollAmount = 2000;
+      // Double the icons for seamless looping
+      setDisplayIcons([...icons, ...icons]);
 
-      const scroll = () => {
-        if (scrollRef.current) {
-          scrollAmount += speed;
-          if (scrollAmount >= scrollRef.current.scrollWidth) {
-            scrollAmount = 0;
-          }
-          scrollRef.current.scrollLeft = scrollAmount;
+      const container = scrollRef.current;
+      let scrollPosition = 0;
+      const speed = 1.5; // Pixels per frame
+
+      const animate = () => {
+        if (!container) return;
+
+        scrollPosition += speed;
+
+        // Reset scroll position when halfway through cloned icons
+        if (scrollPosition >= container.scrollWidth / 2) {
+          scrollPosition = 0;
+          container.scrollLeft = 0;
+        } else {
+          container.scrollLeft = scrollPosition;
         }
-        requestAnimationFrame(scroll);
+
+        animationFrameId.current = requestAnimationFrame(animate);
       };
-      scroll();
+
+      animate();
+      return () => {
+        if (animationFrameId.current) {
+          cancelAnimationFrame(animationFrameId.current);
+        }
+      };
     }
   }, [isMobile]);
 
   return (
-    <div className="lg:mt-2 border-b border-blue-500/20 py-8 lg:mx-0">
-      <div className="text-center justify-between mb-8 ">
-        <h3 className="text-white text-lg">Powered By Leading Technologies</h3>
+    <div className="border-b border-blue-500/30 py-8 lg:py-12 px-4 lg:px-0">
+      <div className="text-center mb-8 lg:mb-12">
+        <h3 className="text-white text-lg lg:text-xl font-medium">
+          Powered By Leading Technologies
+        </h3>
       </div>
-      <div
-        ref={scrollRef}
-        className={
-          isMobile
-            ? "flex items-center gap-12 sm:gap-48 overflow-hidden whitespace-nowrap no-scrollbar"
-            : "flex items-center justify-center gap-12 sm:gap-48"
-        }
-      >
-        {icons.map((icon, index) => (
-          <div
-            key={index}
-            className="w-16 h-16 flex items-center justify-center flex-shrink-0"
-            aria-label={`Technology Partner ${index + 1}`}
-          >
-            <img
-              src={`/assets/${icon}`}
-              alt={`Technology Partner ${index + 1}`}
-              className="w-16 h-16 rounded-full"
-            />
-          </div>
-        ))}
+
+      <div className="relative max-w-[1440px] mx-auto ">
+        {/* Gradient overlays for better visual indication */}
+        <div className="absolute inset-y-0 left-0 w-16 bg-gradient-to-r from-gray-900 to-transparent z-10 rounded-[12px]" />
+        <div className="absolute inset-y-0 right-0 w-16 bg-gradient-to-l from-gray-900 to-transparent z-10 rounded-[12px]" />
+
+        <div
+          ref={scrollRef}
+          className={`flex items-center ${
+            isMobile
+              ? "gap-24 overflow-x-hidden no-scrollbar"
+              : "gap-12 lg:gap-24 flex-wrap justify-center"
+          }`}
+          aria-label="Technology partners list"
+        >
+          {displayIcons.map((icon, index) => (
+            <div
+              key={`${icon}-${index}`}
+              className="flex-shrink-0 p-2 lg:p-3 transition-transform duration-300 hover:scale-110"
+              role="img"
+              aria-label={icon.replace(".png", "")}
+            >
+              <img
+                src={`/assets/${icon}`}
+                alt={icon.replace(".png", "")}
+                className="w-12 h-12 sm:w-16 sm:h-16 lg:w-20 lg:h-20 object-contain rounded-full opacity-90 hover:opacity-100 transition-opacity"
+                loading="lazy"
+              />
+            </div>
+          ))}
+        </div>
       </div>
     </div>
   );

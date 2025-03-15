@@ -17,7 +17,6 @@ export const NewsletterSection = () => {
           </button>
         </div>
       </div>
-      
     </div>
   );
 };

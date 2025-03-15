@@ -25,18 +25,18 @@ export const Footer = () => {
   ];
 
   return (
-    <footer className="border-1 border-blue-200 mt-8 sm:mt-16 lg:mt-24 py-8 sm:py-12 lg:py-16 border-t border-blue-400 rounded-lg">
-      <div
-        className="container mx-auto px-4 sm:px-6 lg:px-8">
+    <footer className="border-t border-gray-200 mt-16 lg:mt-24 py-12 lg:py-16 rounded-lg">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <NewsletterSection />
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8 md:gap-12">
+        <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-4 lg:gap-12 mt-12">
+          <div className="md:col-span-2 lg:col-span-1">
           <BrandSection />
+          </div>
           <FooterLinks title="Service" links={serviceLinks} />
           <FooterLinks title="Community" links={communityLinks} />
           <ContactSection />
         </div>
-
         <Copyright />
       </div>
     </footer>
